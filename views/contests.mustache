@@ -1,0 +1,21 @@
+<h1>{{ title }}</h1>
+<form>
+	<select>
+		<option></option>
+		{{#types}}
+		<option>{{.}}</option>
+		{{/types}}
+	</select>
+	<select>
+		<option></option>
+		{{#status}}
+		<option>{{.}}</option>
+		{{/status}}
+	</select>
+	<input type="text" placeholder="Suche…">
+</form>
+<ul class="gridlist">
+{{#projects}}
+	<li>{{> project}}
+{{/projects}}
+</ul>
