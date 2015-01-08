@@ -1,0 +1,9 @@
+%maxWidth{
+	max-width: $baseMaxWidth;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+main.maxWidth{
+	@extend %maxWidth;
+}

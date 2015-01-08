@@ -1,0 +1,40 @@
+//------------------------------------------------------------------------------
+//
+//  Mainnav
+//
+//------------------------------------------------------------------------------
+
+.mainnav{
+	margin-bottom: 1em;
+
+	a{
+		text-decoration: none;
+	}
+
+	ul{
+		@extend %resetList;
+		position: relative;
+	}
+
+	&__firstlevel > li > a{
+		@extend %uppercase;
+	}
+
+	li{
+
+		&.current > a{
+			font-weight: bold;
+		}
+
+		&.current ul{
+			display: block;
+		}
+
+		ul{
+			display: none;
+			position: absolute; 
+			left: 150px;
+			bottom: 0;
+		}
+	}
+}

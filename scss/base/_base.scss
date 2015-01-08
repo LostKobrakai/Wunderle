@@ -1,0 +1,23 @@
+html {
+	box-sizing: border-box;
+	font-size: 100%;
+}
+*, 
+*:before, 
+*:after {
+	box-sizing: inherit;
+}
+
+html, body{
+	min-height: 100%;
+}
+
+body{
+	font-family: $fontFamily;
+	font-size: calculateBase($baseFontSize);
+	color: $baseFontColor;
+	background-color: $bgColor;
+	line-height: 1.4;
+
+	padding-top: 2em;
+}

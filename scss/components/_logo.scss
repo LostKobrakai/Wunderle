@@ -1,0 +1,19 @@
+.logo{
+	@include fontSize(23px);
+	line-height: 1.1;
+	display: block;
+	text-decoration: none;
+
+	&--bold{
+		@extend %uppercase;
+		font-weight: 900;
+	}
+
+	&--light{
+		font-weight: 300;
+	}
+
+	&--bigmargin{
+		margin-bottom: 5em;
+	}
+}

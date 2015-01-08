@@ -1,0 +1,19 @@
+@function calculateBase($size) {
+	$percSize: $size / 16px * 100;
+	@return #{$percSize}#{"%"};
+}
+
+@function calculateRem($size) {
+	$remSize: $size / $baseFontSize;
+	@return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+	font-size: $size; //Fallback in px
+	font-size: calculateRem($size);
+}
+
+%uppercase{
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}

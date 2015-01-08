@@ -1,0 +1,5 @@
+.content .PageList .PageListItem:hover .PageListActions {
+display: inline;
+-webkit-transition-delay: .25s;
+transition-delay: .25s; 
+}

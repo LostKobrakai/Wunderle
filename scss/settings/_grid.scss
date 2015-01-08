@@ -1,0 +1,23 @@
+$baseMaxWidth: 1100px;
+$mobilePadding: 10px;
+
+$responsive: true;
+$mobile-first: true;
+$gutter: 20px;
+$use-silent-classes: true;
+
+$push: false;
+$pull: false;
+
+$use-markup-fix: true;
+
+$breakpoints: (
+	'palm' '(max-width: 480px)',
+	'lap' '(min-width: 481px) and (max-width: 1023px)',
+	'portable' '(max-width: 1023px)',
+	'desk' '(min-width: 1024px)'
+);
+
+$breakpoint-has-widths: ('palm', 'lap', 'portable', 'desk');
+$breakpoint-has-push:	('palm', 'lap', 'portable', 'desk');
+$breakpoint-has-pull:	('palm', 'lap', 'portable', 'desk');

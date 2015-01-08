@@ -1,0 +1,10 @@
+# Sass
+.scssc
+.sass-cache
+*.css.map
+
+# Composer 
+composer.phar
+vendor/
+
+*.js.map

@@ -1,0 +1,14 @@
+.siteHeader{
+	@extend %maxWidth;
+
+	border-top: $border;
+	border-bottom: $border;
+
+	padding-top: 1em;
+}
+
+.canvas{
+	width: 1100px;
+	height: auto;
+	@extend %maxWidth;
+}

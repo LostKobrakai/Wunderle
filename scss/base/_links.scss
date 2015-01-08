@@ -1,0 +1,10 @@
+a, a:link, a:visited{
+	color: $baseFontColor;
+}
+
+a:hover,
+a:active,
+a:focus{
+	color: $fontDarkGray;
+	text-decoration: underline;
+}
