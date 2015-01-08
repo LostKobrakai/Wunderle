@@ -61,6 +61,28 @@
 		<main id="content" class="maxWidth">
 			<?php echo $content; ?>
 		</main>
+		<footer class="siteFooter">
+			&copy; <?php echo date("Y"); ?> Wunderle + Partner Architekten
+
+			<nav class="footernav">
+				<ul>
+					<?php 
+						foreach($settings->footer as $item) :
+							if($item->switch) :
+					?>
+					<li>
+						<a href="<?php echo $item->website; ?>">
+							<?php echo $item->title; ?>
+						</a>
+					<?php else : ?>
+					<li>
+						<a href="<?php echo $item->page->url; ?>">
+							<?php echo $item->page->title; ?>
+						</a>
+					<?php endif; endforeach; ?>
+				</ul>
+			</nav>
+		</footer>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js" type="text/javascript"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js" type="text/javascript"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.18/paper-full.min.js" type="text/javascript"></script>
