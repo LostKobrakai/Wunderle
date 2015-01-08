@@ -36,7 +36,7 @@
 			<nav class="mainnav">
 				<ul class="mainnav__firstlevel">
 					<?php foreach($homepage->children as $first) : ?>
-					<li<?php if($first->id === $page->id) echo " class='current'"; ?>>
+					<li<?php if($first->id === $page->id || in_array($first->id, $page->parents->explode("id"))) echo " class='current'"; ?>>
 						<a href="<?php echo $first->url; ?>" data-template="<?php echo $first->template->name; ?>"><?php echo $first->title; ?></a>
 						<?php if($first->numChildren && $first->template->name !== "contests") : ?>
 						<ul class="mainnav__secondlevel">
