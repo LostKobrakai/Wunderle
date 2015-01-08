@@ -19,7 +19,6 @@ foreach($page->find("template=contest, sort=sort") as $p){
 
 $templateData = array(
 	'title' => $page->title,
-	'types' => $page->children->explode("title"),
 	'status' => $pages->find("parent_id=1027")->explode("title"),
 	'projects' => $projects
 );
