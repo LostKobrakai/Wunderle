@@ -48,6 +48,15 @@
 					<?php endif; endforeach; ?>
 				</ul>
 			</nav>
+			<nav class="breadcrumb">
+				<ul>
+				<?php 
+					echo $page->parents->append($page)->implode(function($item){
+						return "<li><a href='$item->url' title='$item->title'>$item->title</a>";
+					});
+				?>
+				</ul>
+			</nav>
 		</header>
 		<main id="content" class="maxWidth">
 			<?php echo $content; ?>

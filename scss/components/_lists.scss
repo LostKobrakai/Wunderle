@@ -13,33 +13,33 @@
 //------------------------------------------------------------------------------
 
 .metadata{
-  margin: 0 0 1em;
-  padding: 0;
-  width: 100%;
-  border-bottom: 1px solid gray;
-  
-  b {
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: black;
-  }
-  
-  li {
-    list-style-type: none;
-    
-    display: inline-block;
-    vertical-align: top;
-    color: gray;
-    padding-bottom: 1em;
-    
-    width: 50%;
-    @media (min-width: 400px){
-      width: 100/3 * 1%;
-    }
-    @media (min-width: 900px){
-      width: 100/6 * 1%;
-    }
-  }
+	margin: 0 0 1em;
+	padding: 0;
+	width: 100%;
+	border-bottom: 1px solid gray;
+	
+	b {
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: black;
+	}
+	
+	li {
+		list-style-type: none;
+		
+		display: inline-block;
+		vertical-align: top;
+		color: gray;
+		padding-bottom: 1em;
+		
+		width: 50%;
+		@media (min-width: 400px){
+			width: 100/3 * 1%;
+		}
+		@media (min-width: 900px){
+			width: 100/6 * 1%;
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -49,24 +49,77 @@
 //------------------------------------------------------------------------------
 
 .project{
-  @extend .resp;
-  @extend .resp--1x1;
+	@extend .resp;
+	@extend .resp--1x1;
 
-  background-color: #fff;
+	background-color: #fff;
 
-  img{
-    width: 100%; // 3:2 Format
-  }
+	img{
+		width: 100%; // 3:2 Format
+	}
 
-  &__desc{
-    position: absolute;
-    width: 100%;
-    height: 33.3333332%; // 3:1 Format
-    bottom: 0;
-    padding: 2em;
-  }
+	&__desc{
+		position: absolute;
+		width: 100%;
+		height: 33.3333332%; // 3:1 Format
+		bottom: 0;
+		padding: 2em;
+	}
 
-  h1{
-    @include fontSize(14px);
-  }
+	h1{
+		@include fontSize(14px);
+	}
+}
+
+//------------------------------------------------------------------------------
+//
+//  Metadata
+//
+//  <ul class="metadata">
+//    <li>
+//      <b>Title</b>
+//      Entry
+//    <li>
+//      …
+//  </ul>
+//
+//------------------------------------------------------------------------------
+
+$breadcrumb-space: 0.5em;
+$breadcrumb-spacer: ">";
+
+.breadcrumb{
+	position: relative;
+	height: .7em;
+
+	& > ul{
+		@extend %resetList;
+		position: absolute;
+		background-color: $bgColor;
+		padding-right: 1em;
+
+		& > li{
+			display: inline-block;
+			margin-left: $breadcrumb-space;
+
+			&::before,
+			&:before{
+				content: $breadcrumb-spacer;
+				margin-right: $breadcrumb-space;
+			}
+
+			&:first-child{
+				margin-left: 0;
+
+				&::before,
+				&:before{
+					content: none;
+				}
+			}
+		}
+	}
+
+	a:link{
+		text-decoration: none;
+	}
 }
