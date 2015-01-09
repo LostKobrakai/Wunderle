@@ -2,7 +2,8 @@
 
 	//Is ajax call?
 	if($config->ajax) :
-		echo json_encode($templateData);
+		$data = array('template' => $template, 'data' => $templateData);
+		echo json_encode($data);
 	else :
 
 	//Actually Render Stuff

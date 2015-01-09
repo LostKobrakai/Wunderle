@@ -13,7 +13,7 @@ foreach($page->find("template=contest, sort=sort") as $p){
 		'meta_type' => array(
 			'title' => "Wettbewerb"
 		),
-		'meta_status' => $p->meta_status->title
+		'meta_status' => $p->meta_status ? $p->meta_status->title : ""
 	);
 }
 
