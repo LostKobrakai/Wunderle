@@ -101,6 +101,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/js\/libs\/hogan-3.0.2.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/libs\/hogan-3.0.2.min.js",
+		"outputAbbreviatedPath": "\/js\/libs\/min\/hogan-3.0.2.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/master.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -118,17 +129,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/master.min.js",
 		"outputAbbreviatedPath": "\/js\/min\/master.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/ocanvas.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/ocanvas.js",
-		"outputAbbreviatedPath": "\/js\/min\/ocanvas-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1601,14 +1601,6 @@
 	],
 "lastSavedByUser": "Benjamin Milde",
 "manualImportLinks": {
-	"\/js\/master.js": [
-		{
-			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/js\/ocanvas.js",
-			"position": 0,
-			"type": 0
-			}
-		]
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
@@ -2205,7 +2197,7 @@
 	"sassUseLibsass": 0,
 	"shouldRunAutoprefixer": 0,
 	"shouldRunBless": 0,
-	"skippedItemsString": ".svn, .git, .hg, log, _logs, _cache, cache, logs, node_modules",
+	"skippedItemsString": "_cache, logs, \/views, _logs, cache, .git, log, node_modules, .svn, .hg",
 	"slimAutoOutputPathEnabled": 1,
 	"slimAutoOutputPathFilenamePattern": "*.html",
 	"slimAutoOutputPathRelativePath": "",
