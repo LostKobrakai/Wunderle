@@ -52,7 +52,7 @@
 	@extend .resp;
 	@extend .resp--1x1;
 
-	background-color: #fff;
+	background-color: $bgWhite;
 
 	img{
 		width: 100%; // 3:2 Format

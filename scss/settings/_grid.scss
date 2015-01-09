@@ -11,13 +11,33 @@ $pull: false;
 
 $use-markup-fix: true;
 
-$breakpoints: (
-	'palm' '(max-width: 480px)',
-	'lap' '(min-width: 481px) and (max-width: 1023px)',
-	'portable' '(max-width: 1023px)',
-	'desk' '(min-width: 1024px)'
-);
+$breaks: (520px, 650px, 850px, 1100px, 1300px);
 
-$breakpoint-has-widths: ('palm', 'lap', 'portable', 'desk');
-$breakpoint-has-push:	('palm', 'lap', 'portable', 'desk');
-$breakpoint-has-pull:	('palm', 'lap', 'portable', 'desk');
+$breakpoints: ();
+$breakpoint-has-widths: ('bp0');
+$first: 'bp0' '(max-width: 480px)';
+$breakpoints: append($breakpoints, $first, "comma");
+
+@for $i from 1 through length($breaks) {
+	$break: nth($breaks, $i);
+
+	// From Break
+	$value: 'bp#{$i}' '(min-width: #{$break})';
+	$breakpoints: append($breakpoints, $value, "comma");
+	$breakpoint-has-widths: append($breakpoint-has-widths, 'bp#{$i}', 'space');
+
+	// To Break
+	$value: 'to-bp#{$i}' '(max-width: #{$break - 1px})';
+	$breakpoints: append($breakpoints, $value, "comma");
+	$breakpoint-has-widths: append($breakpoint-has-widths, 'bp#{$i}', 'space');
+
+	// Only till next
+	@if $i != length($breaks) {
+		$next: nth($breaks, $i + 1);
+		$value: 'bp#{$i}-only' '(min-width: #{$break})(max-width: #{$next - 1px})';
+		$breakpoints: append($breakpoints, $value, "comma");
+	}
+}
+
+$breakpoint-has-push:	();
+$breakpoint-has-pull:	();

@@ -16,6 +16,7 @@
 
 	& > li{
 		@extend %grid__item;
-		@extend %desk--one-third;
+		@extend %bp1--one-half;
+		@extend %bp3--one-third;
 	}
 }
