@@ -1,0 +1,22 @@
+.partners{
+	@extend %grid;
+
+	& > li{
+		@extend %grid__item;
+		@extend %bp3--one-third;
+	}
+}
+
+.flex .partners{
+	display: flex;
+
+	& > li{
+		&:first-child{
+			order: 2;
+		}
+		&:last-child{
+			order: 2;
+		}
+
+	}
+}
