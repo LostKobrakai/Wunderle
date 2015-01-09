@@ -18,10 +18,18 @@
 {{#projects}}
 	<li>{{> project}}
 {{/projects}}
+{{^projects}}
+	<li>
+		<p>Nothing found.</p>
+{{/projects}}
 </ul>
 
 <ul class="gridlist gridlist--inactive">
 {{#inactive}}
 	<li>{{> project}}
+{{/inactive}}
+{{^inactive}}
+	<li>
+		<p>Nothing found.</p>
 {{/inactive}}
 </ul>
