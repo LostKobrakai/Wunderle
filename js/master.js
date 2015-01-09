@@ -2,6 +2,7 @@ var Mustache = Mustache || null;
 
 var theme = {
 	breadcrumbWrapper: null,
+	currentTemplate: null,
 
 	init: function(){
 		$(".mainnav").on("click", "a", this.stuff);
@@ -22,6 +23,7 @@ var theme = {
 			theme.breadcrumbWrapper.first().html(breadcrumb);
 			theme.aniSiteChange(html);
 			history.pushState({}, data.title, ele.attr("href"));
+			theme.currentTemplate = data.template;
 			$(".mainnav").find(".active").removeClass("active");
 			ele.closest("li").addClass("active");
 			if(ele.closest(".mainnav__secondlevel").length){

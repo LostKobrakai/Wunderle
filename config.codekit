@@ -1740,7 +1740,7 @@
 			"type": 0
 			},
 		{
-			"followForSyntaxChecking": 1,
+			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/templates.js",
 			"position": 4,
 			"type": 0

@@ -38,7 +38,7 @@ foreach($page->parent->find("parent_id!=$page->id, template=project") as $p){
 
 $templateData = array(
 	'title' => $page->title,
-	'types' => $page->children->explode("title"),
+	'types' => $page->parent->children->explode("title"),
 	'status' => $pages->find("parent_id=1027")->explode("title"),
 	'projects' => $projects,
 	'inactive' => $inactive

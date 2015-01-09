@@ -17,3 +17,8 @@ foreach($page->parents->append($page) as $item){
 		'url' => $item->url
 	);
 }
+
+// if($config->ajax && $input->get->breadcrumbOnly == 1){
+// 	$data = array('template' => $template, 'breadcrumb' => array('breadcrumb' => $breadcrumb));
+// 	echo json_encode($data);
+// }
