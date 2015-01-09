@@ -38,12 +38,12 @@
 				<h1 class="is-vishidden">Mainnavigation</h1>
 				<ul class="mainnav__firstlevel">
 					<?php foreach($homepage->children as $first) : ?>
-					<li<?php if($first->id === $page->id || in_array($first->id, $page->parents->explode("id"))) echo " class='current'"; ?>>
+					<li<?php if($first->id === $page->id || in_array($first->id, $page->parents->explode("id"))) echo " class='active'"; ?>>
 						<a href="<?php echo $first->url; ?>" data-template="<?php echo $first->template->name; ?>"><?php echo $first->title; ?></a>
 						<?php if($first->numChildren && $first->template->name !== "contests") : ?>
 						<ul class="mainnav__secondlevel">
 						<?php foreach($first->children as $second) : ?>
-							<li<?php if($second->id === $page->id || in_array($second->id, $page->parents->explode("id"))) echo " class='current'"; ?>>
+							<li<?php if($second->id === $page->id || in_array($second->id, $page->parents->explode("id"))) echo " class='active'"; ?>>
 								<a href="<?php echo $second->url; ?>" data-template="<?php echo $second->template->name; ?>"><?php echo $second->title; ?></a>
 						<?php endforeach; ?>
 						</ul>

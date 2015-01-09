@@ -2,7 +2,7 @@ var Mustache = Mustache || null;
 
 var theme = {
 	init: function(){
-		$("nav").on("click", "a", this.stuff);
+		$(".mainnav").on("click", "a", this.stuff);
 		this.console = window.console || null;
 		this.console.log(window.templates);
 	},
@@ -15,9 +15,13 @@ var theme = {
 			this.console.log(data);
 			var templates = window.templates || null;
 			var html = templates[data.template].render(data.data, templates);
-			this.console.log(templates[data.template]);
 			theme.aniSiteChange(html);
 			history.pushState({}, data.title, ele.attr("href"));
+			$(".mainnav").find(".active").removeClass("active");
+			ele.closest("li").addClass("active");
+			if(ele.closest(".mainnav__secondlevel").length){
+				ele.closest(".mainnav__secondlevel").closest("li").addClass("active");
+			}
 		});
 	},
 

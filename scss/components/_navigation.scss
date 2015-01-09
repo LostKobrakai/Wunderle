@@ -22,11 +22,11 @@
 
 	li{
 
-		&.current > a{
+		&.active > a{
 			font-weight: bold;
 		}
 
-		&.current ul{
+		&.active ul{
 			display: block;
 		}
 
