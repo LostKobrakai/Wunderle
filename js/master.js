@@ -1,10 +1,13 @@
 var Mustache = Mustache || null;
 
 var theme = {
+	breadcrumbWrapper: null,
+
 	init: function(){
 		$(".mainnav").on("click", "a", this.stuff);
 		this.console = window.console || null;
 		this.console.log(window.templates);
+		this.breadcrumbWrapper = $(".breadcrumb").first();
 	},
 
 	stuff: function(e){
@@ -15,6 +18,8 @@ var theme = {
 			this.console.log(data);
 			var templates = window.templates || null;
 			var html = templates[data.template].render(data.data, templates);
+			var breadcrumb = templates.breadcrumb.render(data.breadcrumb);
+			theme.breadcrumbWrapper.first().html(breadcrumb);
 			theme.aniSiteChange(html);
 			history.pushState({}, data.title, ele.attr("href"));
 			$(".mainnav").find(".active").removeClass("active");

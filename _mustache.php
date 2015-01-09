@@ -2,7 +2,7 @@
 
 	//Is ajax call?
 	if($config->ajax) :
-		$data = array('template' => $template, 'data' => $templateData);
+		$data = array('template' => $template, 'data' => $templateData, 'breadcrumb' => array('breadcrumb' => $breadcrumb));
 		echo json_encode($data);
 	else :
 
@@ -15,6 +15,9 @@
 
 	$tpl = $m->loadTemplate($template);
 	$content = $tpl->render($templateData);
+
+	$tpl = $m->loadTemplate("breadcrumb");
+	$breadcrumb_markup = $tpl->render(array('breadcrumb' => $breadcrumb));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,14 +54,7 @@
 				</ul>
 			</nav>
 			<nav class="breadcrumb">
-				<h1 class="is-vishidden">Breadcrump</h1>
-				<ul>
-				<?php 
-					echo $page->parents->append($page)->implode(function($item){
-						return "<li><a href='$item->url' title='$item->title'>$item->title</a>";
-					});
-				?>
-				</ul>
+				<?php echo $breadcrumb_markup; ?>
 			</nav>
 		</header>
 		<main id="content" class="maxWidth">
