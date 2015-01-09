@@ -34,6 +34,7 @@
 				</span>
 			</a>
 			<nav class="mainnav">
+				<h1 class="is-vishidden">Mainnavigation</h1>
 				<ul class="mainnav__firstlevel">
 					<?php foreach($homepage->children as $first) : ?>
 					<li<?php if($first->id === $page->id || in_array($first->id, $page->parents->explode("id"))) echo " class='current'"; ?>>
@@ -49,6 +50,7 @@
 				</ul>
 			</nav>
 			<nav class="breadcrumb">
+				<h1 class="is-vishidden">Breadcrump</h1>
 				<ul>
 				<?php 
 					echo $page->parents->append($page)->implode(function($item){
@@ -64,6 +66,7 @@
 		<footer class="siteFooter">
 			<div class="container">
 				<nav class="footernav">
+					<h1 class="is-vishidden">Footernavigation</h1>
 					<ul>
 						<?php 
 							foreach($settings->footer as $item) :

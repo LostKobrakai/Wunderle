@@ -1,13 +1,17 @@
 <div class="canvas">
 	<canvas id="homeCanvas" width="1100" height="300">
-</div>
 	
-</canvas>
+	</canvas>
+</div>
+
 <h1>{{ title }}</h1>
 <p>{{{ editLink }}}</p>
 
-<div class="news">
+<section class="news-wrapper">
+	<h2 class="is-vishidden">News</h2>
+	<div class="articles">
 	{{#news}}
 		{{> news}}
 	{{/news}}
-</div>
+	</div>
+</section>

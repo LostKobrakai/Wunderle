@@ -1,9 +1,13 @@
-	<article>
-	<h1>{{ title }}</h1>
-	<div class="content">
-		{{{ content }}}
-	</div>
-	<footer>
-		<span class="date">{{ date }}</span> | <span class="js-togglenews">Weiterlesen</span>
-	</footer>
+	<article class="news">
+		<h3 class="h4">
+			<a href="{{ url }}" title="{{ title }}"></a>
+				{{ title }}
+			</a>
+		</h3>
+		<div class="content">
+			{{{ content }}}
+		</div>
+		<footer>
+			<span class="date">{{ date }}</span> <a class="js-togglenews button align-right">Weiterlesen</a>
+		</footer>
 	</article>

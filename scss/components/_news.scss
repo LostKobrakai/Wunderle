@@ -1,0 +1,23 @@
+.news{
+	padding-top: 4em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid $fontLightGray;
+
+	.h4{
+		@extend %uppercase;
+		font-weight: normal;
+	}
+
+	.date{
+		@include fontSize(11px);
+		color: $fontLightGray;
+	}
+
+	.button{
+		@extend %uppercase;
+	}
+
+	&:first-child{
+		border-top: 1px solid black;
+	}
+}
