@@ -13,6 +13,5 @@ foreach($pages->find("template=news, sort=-date") as $n){
 
 $templateData = array(
 	'title' => $page->title,
-	'editLink' => $page->editable() ? "<a href='$page->editURL'>Edit</a>" : "Nooot!",
 	'news' => $news
 );

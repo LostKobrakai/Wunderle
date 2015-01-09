@@ -11,3 +11,5 @@ vendor/
 
 views/*.js
 views/partials/*.js
+
+node_modules

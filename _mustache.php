@@ -87,12 +87,8 @@
 				<span class="copy">&copy; <?php echo date("Y"); ?> Wunderle + Partner Architekten</span>
 			</div>
 		</footer>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js" type="text/javascript"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js" type="text/javascript"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.18/paper-full.min.js" type="text/javascript"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js" type="text/javascript"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.ui.min.js" type="text/javascript"></script>
 		<script src="<?php echo $config->urls->templates?>js/master.min.js" type="text/javascript"></script>
+		<script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script>
 	</body>
 </html>
 <?php 
