@@ -11,10 +11,10 @@ foreach($page->find("template=project, sort=sort") as $p){
 			'desc' => $p->project_images->description
 		),
 		'meta_type' => array(
-			'title' => $p->meta_type->title,
-			'url' => $p->meta_type->url
+			'title' => $p->meta_type ? $p->meta_type->title : "",
+			'url' => $p->meta_type ? $p->meta_type->url : ""
 		),
-		'meta_status' => $p->meta_status->title
+		'meta_status' => $p->meta_status ? $p->meta_status->title : ""
 	);
 }
 

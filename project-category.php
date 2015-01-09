@@ -14,7 +14,7 @@ foreach($page->find("template=project, sort=sort") as $p){
 			'title' => $p->meta_type->title,
 			'url' => $p->meta_type->url
 		),
-		'meta_status' => $p->meta_status->title
+		'meta_status' => $p->meta_status ? $p->meta_status->title : ""
 	);
 }
 
@@ -32,7 +32,7 @@ foreach($page->parent->find("parent_id!=$page->id, template=project") as $p){
 			'title' => $p->meta_type->title,
 			'url' => $p->meta_type->url
 		),
-		'meta_status' => $p->meta_status->title
+		'meta_status' => $p->meta_status ? $p->meta_status->title : ""
 	);
 }
 

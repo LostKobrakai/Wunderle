@@ -53,6 +53,7 @@
 	@extend .resp--1x1;
 
 	background-color: $bgWhite;
+	margin-bottom: $gutter;
 
 	img{
 		width: 100%; // 3:2 Format
