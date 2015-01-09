@@ -1,0 +1,47 @@
+.siteFooter{
+	background-color: $bgWhite;
+	padding-bottom: 2em;
+
+	@include grid-media-query("bp2"){
+		padding-top: 1em;
+	}
+}
+
+.copy{
+	@include fontSize(11px);
+	color: $fontLightGray;
+}
+
+.footernav{
+	ul{
+		@extend %resetList;
+		margin-bottom: 2em;
+	}
+	li{
+		@extend %uppercase;
+		padding: 1em 0;
+		line-height: 1;
+		border-bottom: 1px solid $fontLightGray;
+	}
+
+	a{
+		text-decoration: none;
+	}
+}
+
+@include grid-media-query("bp2"){
+	.footernav{
+		float: right;
+		display: inline-block;
+
+		ul{
+			@extend %resetList;
+		}
+		li{
+			display: inline-block;
+			border-bottom: 0;
+			padding: 0;
+			margin-left: 3em;
+		}
+	}
+}
