@@ -18,7 +18,8 @@ foreach($page->parents->append($page) as $item){
 	);
 }
 
-// if($config->ajax && $input->get->breadcrumbOnly == 1){
-// 	$data = array('template' => $template, 'breadcrumb' => array('breadcrumb' => $breadcrumb));
-// 	echo json_encode($data);
-// }
+if($config->ajax && $input->get->breadcrumbOnly == 1){
+	$data = array('template' => $template, 'breadcrumb' => array('breadcrumb' => $breadcrumb));
+	echo json_encode($data);
+	die();
+}
