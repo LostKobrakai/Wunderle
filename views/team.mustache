@@ -1,0 +1,13 @@
+<h1>{{ title }}</h1>
+
+{{# teams}}
+<h2 class="h5">{{ title }}</h2>
+<table class="{{ name }}">
+{{# items }}
+	<tr>
+		<td>{{ name }}</td>
+		<td>{{ email }}</td>
+	</tr>
+{{/ items }}
+</table>
+{{/ teams}}
