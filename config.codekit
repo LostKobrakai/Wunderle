@@ -411,6 +411,22 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/scss\/components\/_intro.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scss\/components\/_intro.scss",
+		"outputAbbreviatedPath": "\/scss\/css\/_intro.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/scss\/components\/_lists.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -1768,13 +1784,13 @@
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/partials.js",
+			"linkedFileAbbreviatedPath": "\/js\/templates.js",
 			"position": 4,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/templates.js",
+			"linkedFileAbbreviatedPath": "\/js\/partials.js",
 			"position": 5,
 			"type": 0
 			}

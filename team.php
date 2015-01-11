@@ -3,6 +3,7 @@ $fields = array("management", "office", "architects", "constructionists", "inter
 
 $templateData = array(
 	'title' => $page->title,
+	'intro' => $page->text,
 	'teams' => array(
 		array(
 			'title' => $page->fields->get("management")->label,

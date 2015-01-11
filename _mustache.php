@@ -49,7 +49,7 @@
 						<ul class="mainnav__secondlevel">
 						<?php foreach($first->children as $second) : ?>
 							<li<?php if($second->id === $page->id || in_array($second->id, $page->parents->explode("id"))) echo " class='active'"; ?>>
-								<a href="<?php echo $second->url; ?>" data-template="<?php echo $second->template->name; ?>"><?php echo $second->title; ?></a>
+								<a href="<?php echo $second->url; ?>" data-template="<?php echo $second->template->name; ?>" data-title="<?php echo $second->title; ?>"><?php echo $second->title; ?></a>
 						<?php endforeach; ?>
 						</ul>
 					<?php endif; endforeach; ?>

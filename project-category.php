@@ -1,5 +1,8 @@
 <?php 
 
+//Change Template
+$template = $page->parent->template->name;
+
 $projects = [];
 
 foreach($page->find("template=project, sort=sort") as $p){
