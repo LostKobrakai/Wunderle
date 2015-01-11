@@ -13,3 +13,5 @@ views/*.js
 views/partials/*.js
 
 node_modules
+
+.DS_Store
