@@ -40,9 +40,11 @@
 			<nav class="mainnav">
 				<h1 class="is-vishidden">Mainnavigation</h1>
 				<ul class="mainnav__firstlevel">
-					<?php foreach($homepage->children as $first) : ?>
+					<?php foreach($homepage->children as $first) : 
+						$altHref = $first->template->name === "agency" ? "data-href='{$first->child->url}' " : "";
+					?>
 					<li<?php if($first->id === $page->id || in_array($first->id, $page->parents->explode("id"))) echo " class='active'"; ?>>
-						<a href="<?php echo $first->url; ?>" data-template="<?php echo $first->template->name; ?>"><?php echo $first->title; ?></a>
+						<a href="<?php echo $first->url; ?>" <?php echo $altHref; ?>data-template="<?php echo $first->template->name; ?>"><?php echo $first->title; ?></a>
 						<?php if($first->numChildren && $first->template->name !== "contests") : ?>
 						<ul class="mainnav__secondlevel">
 						<?php foreach($first->children as $second) : ?>

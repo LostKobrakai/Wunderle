@@ -13,16 +13,26 @@ var theme = {
 
 	stuff: function(e){
 		e.preventDefault();
+		var ele, href;
 
-		var ele = $(this);
-		$.getJSON(ele.attr("href"), function(data){
-			this.console.log(data);
-			var templates = window.templates || null;
-			var html = templates[data.template].render(data.data, templates);
-			var breadcrumb = templates.breadcrumb.render(data.breadcrumb);
+		ele = $(this);
+
+		if(ele.attr("data-href") !== null){
+			ele = $("[href='"+ele.attr("data-href")+"']").first();
+		}
+
+		href = ele.attr("href");
+
+		$.getJSON(href, function(data){
+			var templates, html, breadcrumb;
+
+			templates = window.templates || null;
+			html = templates[data.template].render(data.data, templates);
+			breadcrumb = templates.breadcrumb.render(data.breadcrumb);
+
 			theme.breadcrumbWrapper.first().html(breadcrumb);
 			theme.aniSiteChange(html);
-			history.pushState({}, data.title, ele.attr("href"));
+			history.pushState({}, data.title, href);
 			theme.currentTemplate = data.template;
 			$(".mainnav").find(".active").removeClass("active");
 			ele.closest("li").addClass("active");

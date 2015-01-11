@@ -1,9 +1,14 @@
 var canvas = {
 	init: function(){
-		this.play();
+		var ele;
+
+		ele = document.querySelector(".canvas");
+		if(ele){
+			this.play(ele);
+		}
 	},
 
-	play: function(){
+	play: function(ele){
 		function lerp(x, a, b){
 			return (1 - x) * a + x * b;
 		}
@@ -12,10 +17,9 @@ var canvas = {
 			return Math.sqrt((x -= x0) * x + (y -= y0) * y);
 		}
 
-		var ele, params, two, canvas, rectangles, center, edge, maxDist, Two = window.Two || null;
+		var params, two, canvas, rectangles, center, edge, maxDist, Two = window.Two || null;
 
 		// Make an instance of two and place it on the page.
-		ele = document.querySelector(".canvas");
 		params = { width: 1100, height: 300, steps: 100, type: Two.Types.canvas };
 		two = new Two(params).appendTo(ele);
 		canvas = document.querySelector("canvas");

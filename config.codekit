@@ -211,6 +211,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/min\/templates-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/min\/templates-min.js",
+		"outputAbbreviatedPath": "\/js\/min\/min\/templates-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/partials.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -345,6 +356,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scss\/base\/_normalize.scss",
 		"outputAbbreviatedPath": "\/scss\/css\/_normalize.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/scss\/base\/_tables.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scss\/base\/_tables.scss",
+		"outputAbbreviatedPath": "\/scss\/css\/_tables.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1741,13 +1768,13 @@
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/templates.js",
+			"linkedFileAbbreviatedPath": "\/js\/partials.js",
 			"position": 4,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/partials.js",
+			"linkedFileAbbreviatedPath": "\/js\/templates.js",
 			"position": 5,
 			"type": 0
 			}
