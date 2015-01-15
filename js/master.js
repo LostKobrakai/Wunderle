@@ -22,11 +22,15 @@ var theme = {
 		this.templates = window.templates || null;
 
 		this.listeners.init();
+
+		$(window).ready(function(){
+			theme.template.initStartTemplate();
+		});
 	},
 
 	listeners: {
 		init: function(){
-			theme.win.on("click", "a:not([href^='http://']):not([href^='https://'])", this.internalPageLink);
+			theme.win.on("click", "a[href]:not([href^='http://']):not([href^='https://'])", this.internalPageLink);
 			theme.win.on("popstate", this.statePoped);
 		},
 
@@ -55,6 +59,10 @@ var theme = {
 
 	history: {
 		renderState: function(page, newState){
+			if(theme.breadcrumb.container.css("visibility") === "hidden"){
+				theme.breadcrumb.container.css("visibility", "visible");
+			}
+
 			// Render content with mustache
 			var html = templates[page.template].render(page.data, templates);
 			theme.contentContainer.html(html);
@@ -136,6 +144,11 @@ var theme = {
 	},
 
 	template: {
+
+		initStartTemplate: function(){
+			this.initPerTemplate(theme.initTemplate);
+		},
+
 		initPerTemplate: function(template){
 			if(template == "home"){
 				this.initHome();
@@ -143,11 +156,35 @@ var theme = {
 		},
 
 		initHome: function(){
-			var articles = $(".articles");
 
-			for (var i = articles.length - 1; i >= 1; i--) {
-				articles[i].find(".content").children().not(':first').hide();
+			theme.breadcrumb.container.css("visibility", "hidden");
+
+			function toggle(){
+				var ele = $(this);
+				if(ele.hasClass("js-open")){ // Close
+					ele.find(".content").children().hide();
+					if(ele.is(":first-child")){
+						ele.find(".content").children().first().show();
+						ele.find(".content").children().eq(2).show();
+					}
+
+					ele.find(".js-togglenews").text("Artikel lesen");
+					ele.removeClass("js-open");
+				}else{ // Open
+					ele.find(".content").children().show();
+					ele.find(".js-togglenews").text("Schließen");
+					ele.addClass("js-open");
+				}
 			}
+
+			var articles = $(".news").addClass("js-open").on("click", toggle);
+
+			for (var i = articles.length - 1; i >= 0; i--) {
+				toggle.apply(articles.eq(i), []);
+			}
+
+			//articles.eq(0).find(".content").children().first().show();
+			//articles.eq(0).find(".content").children().eq(2).show();
 		}
 	}
 };

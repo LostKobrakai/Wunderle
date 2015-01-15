@@ -90,6 +90,9 @@
 			</div>
 		</footer>
 		<script src="<?php echo $config->urls->templates?>js/master.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			theme.initTemplate = "<?php echo $template; ?>";
+		</script>
 		<!-- <script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script> -->
 	</body>
 </html>
