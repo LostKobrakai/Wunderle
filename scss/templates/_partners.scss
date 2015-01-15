@@ -7,8 +7,10 @@
 	}
 }
 
-.flex .partners{
+
+.flexbox .partners{
 	display: flex;
+	flex-wrap: wrap;
 
 	& > li{
 		&:first-child{
@@ -18,5 +20,17 @@
 			order: 2;
 		}
 
+	}
+}
+
+@include grid-media-query("bp3"){
+	.position{
+		display: none;
+	}
+}
+
+@include grid-media-query("bp3"){
+	.flexbox .partners > li{
+		order: 0 !important;
 	}
 }

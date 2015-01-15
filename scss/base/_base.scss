@@ -22,6 +22,41 @@ body{
 	padding-top: 2em;
 }
 
+
+.siteHeader, #content, footer > .container{
+	padding-left: $gutter / 2;
+	padding-right: $gutter / 2
+}
+
+@include grid-media-query("bp4"){
+	.siteHeader, #content, footer > .container{
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
 main{
 	margin-bottom: $gutter;
 }
+
+// .mainnav,
+// .logo,
+// .intro,
+// .partners,
+// .siteFooter .container,
+// .breadcrumb > ul{
+// 	padding-left: $gutter / 2;
+// 	padding-right: $gutter / 2;
+// }
+
+// @include grid-media-query("bp3"){
+// 	.mainnav,
+// 	.logo,
+// 	.intro,
+// 	.partners,
+// 	.siteFooter .container,
+// 	.breadcrumb > ul{
+// 		padding-left: 0;
+// 		padding-right: 0;
+// 	}
+// }

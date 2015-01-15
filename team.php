@@ -1,4 +1,4 @@
-<?
+<?php
 $fields = array("management", "office", "architects", "constructionists", "interns");
 
 $templateData = array(
