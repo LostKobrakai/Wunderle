@@ -222,6 +222,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/modernizr.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/modernizr.js",
+		"outputAbbreviatedPath": "\/js\/min\/modernizr-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/partials.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -1766,32 +1777,38 @@
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/hogan.min.js",
+			"linkedFileAbbreviatedPath": "\/js\/modernizr.js",
 			"position": 1,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.min.js",
+			"linkedFileAbbreviatedPath": "\/js\/libs\/hogan.min.js",
 			"position": 2,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.ui.min.js",
+			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.min.js",
 			"position": 3,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/templates.js",
+			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.ui.min.js",
 			"position": 4,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/partials.js",
+			"linkedFileAbbreviatedPath": "\/js\/templates.js",
 			"position": 5,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 0,
+			"linkedFileAbbreviatedPath": "\/js\/partials.js",
+			"position": 6,
 			"type": 0
 			}
 		]
@@ -2005,7 +2022,7 @@
 			"flagValue": -1
 			},
 		"devel": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"dojo": {
@@ -2013,7 +2030,7 @@
 			"flagValue": -1
 			},
 		"eqeqeq": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"eqnull": {
@@ -2243,7 +2260,7 @@
 		},
 	"jsLintFlags2": {
 		"ass": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"bitwise": {
@@ -2259,7 +2276,7 @@
 			"flagValue": -1
 			},
 		"continue": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"debug": {
@@ -2267,11 +2284,11 @@
 			"flagValue": -1
 			},
 		"devel": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"eqeq": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"evil": {

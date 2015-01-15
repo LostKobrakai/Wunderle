@@ -1,10 +1,10 @@
 <?php
 
 	//Is ajax call?
-	if($config->ajax) :
-		$data = array('template' => $template, 'data' => $templateData, 'breadcrumb' => array('breadcrumb' => $breadcrumb));
-		echo json_encode($data);
-	else :
+	if($config->ajax){
+		echo json_encode(new FrontendPage($page, $templateData, $template));
+		die();
+	}
 
 	//Actually Render Stuff
 	$m = new Mustache_Engine(array(
@@ -17,7 +17,8 @@
 	$content = $tpl->render($templateData);
 
 	$tpl = $m->loadTemplate("breadcrumb");
-	$breadcrumb_markup = $tpl->render(array('breadcrumb' => $breadcrumb));
+	$current = array_pop($breadcrumb);
+	$breadcrumb_markup = $tpl->render(array('parents' => $breadcrumb, 'current' => array($current)));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,12 +47,14 @@
 					<li<?php if($first->id === $page->id || in_array($first->id, $page->parents->explode("id"))) echo " class='active'"; ?>>
 						<a href="<?php echo $first->url; ?>" <?php echo $altHref; ?>data-template="<?php echo $first->template->name; ?>"><?php echo $first->title; ?></a>
 						<?php if($first->numChildren && $first->template->name !== "contests") : ?>
-						<ul class="mainnav__secondlevel">
-						<?php foreach($first->children as $second) : ?>
-							<li<?php if($second->id === $page->id || in_array($second->id, $page->parents->explode("id"))) echo " class='active'"; ?>>
-								<a href="<?php echo $second->url; ?>" data-template="<?php echo $second->template->name; ?>" data-title="<?php echo $second->title; ?>"><?php echo $second->title; ?></a>
-						<?php endforeach; ?>
-						</ul>
+						<div class="nav-aside">
+							<ul class="mainnav__secondlevel">
+							<?php foreach($first->children as $second) : ?>
+								<li<?php if($second->id === $page->id || in_array($second->id, $page->parents->explode("id"))) echo " class='active'"; ?>>
+									<a href="<?php echo $second->url; ?>" data-template="<?php echo $second->template->name; ?>" data-title="<?php echo $second->title; ?>"><?php echo $second->title; ?></a>
+							<?php endforeach; ?>
+							</ul>
+						</div>
 					<?php endif; endforeach; ?>
 				</ul>
 			</nav>
@@ -87,9 +90,6 @@
 			</div>
 		</footer>
 		<script src="<?php echo $config->urls->templates?>js/master.min.js" type="text/javascript"></script>
-		<script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script>
+		<!-- <script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script> -->
 	</body>
 </html>
-<?php 
-	endif; 
-?>

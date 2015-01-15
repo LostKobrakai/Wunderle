@@ -18,6 +18,8 @@
 		@extend %grid__item;
 		@extend %bp1--one-half;
 		@extend %bp3--one-third;
+
+		transform: .25s;
 	}
 
 	&--inactive{

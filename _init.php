@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+require '_classes.php';
 
 $homepage = $pages->get("/");
 $settings = $pages->get(1020);
@@ -19,7 +20,11 @@ foreach($page->parents->append($page) as $item){
 }
 
 if($config->ajax && $input->get->breadcrumbOnly == 1){
-	$data = array('template' => $template, 'breadcrumb' => array('breadcrumb' => $breadcrumb));
+	$data = array(
+		'id' => $page->id,
+		'template' => $template, 
+		'breadcrumb' => array('breadcrumb' => $breadcrumb
+	));
 	echo json_encode($data);
 	die();
 }

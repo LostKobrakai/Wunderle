@@ -1,7 +1,11 @@
 <h1 class="is-vishidden">Breadcrump</h1>
 <ul>
-	{{# breadcrumb }}
+	{{# parents }}
 	<li>
 		<a href='{{ url }}' title='{{ title }}'>{{ title }}</a>
-	{{/ breadcrumb }}
+	{{/ parents }}
+	{{# current }}
+	<li>
+		<a href='#content' title='{{ title }}'>{{ title }}</a>
+	{{/ current }}
 </ul>

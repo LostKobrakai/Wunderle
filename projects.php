@@ -8,7 +8,7 @@ foreach($page->find("template=project, sort=sort") as $p){
 		'url' => $p->url,
 		'image' => array(
 			'url' => $p->project_images->first()->size(375, 250)->url,
-			'desc' => $p->project_images->description
+			'desc' => $p->project_images->first()->description
 		),
 		'meta_type' => array(
 			'title' => $p->meta_type ? $p->meta_type->title : "",

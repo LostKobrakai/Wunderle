@@ -9,6 +9,11 @@
 
 	a{
 		text-decoration: none;
+
+		&:hover,
+		&:focus{
+			text-decoration: underline;
+		}
 	}
 
 	ul{
@@ -26,15 +31,29 @@
 			font-weight: bold;
 		}
 
-		&.active ul{
+		&.active .nav-aside{
 			display: block;
 		}
 
-		ul{
+		&:hover .nav-aside{
+			display: block;
+			background-color: $bgColor;
+			z-index: 2;
+			height: 8 * 1.4em;
+			min-width: 120px;
+		}
+
+		.nav-aside{
 			display: none;
 			position: absolute; 
-			left: 150px;
+			left: 140px;
 			bottom: 0;
+			padding-left: 10px;
+
+			ul{
+				position: absolute;
+				bottom: 0;
+			}
 		}
 	}
 }
