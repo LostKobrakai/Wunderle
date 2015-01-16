@@ -6,22 +6,34 @@
 
 <img src="{{ image.url }}" alt="{{ image.desc }}">
 
-{{# profile }}
-	<h2>{{ title }}</h2>
-	{{{ text }}}
-{{/ profile }}
+<div class="services__above">
+	{{# profile }}
+	<div class="{{ title }} services--half">
+		<h2>{{ title }}</h2>
+		{{{ text }}}
+	</div>
+	{{/ profile }}
 
-{{# philosophy }}
-	<h2>{{ title }}</h2>
-	{{{ text }}}
-{{/ philosophy }}
+	{{# philosophy }}
+	<div class="{{ title }} services--half">
+		<h2>{{ title }}</h2>
+		{{{ text }}}
+	</div>
+	{{/ philosophy }}
+</div>
+
+<hr>
 
 {{# quality }}
+<div class="{{ title }} services--full">
 	<h2>{{ title }}</h2>
 	{{{ text }}}
+</div>
 {{/ quality }}
 
 {{# services }}
+<div class="{{ title }} services--full">
 	<h2>{{ title }}</h2>
 	{{{ text }}}
+</div>
 {{/ services }}
