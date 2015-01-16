@@ -41,18 +41,20 @@ var theme = {
 		},
 
 		internalPageLink: function(e){
-			var ele = $(this),
-					href = ele.attr("href");
+			if(theme.ajax){
+				var ele = $(this),
+						href = ele.attr("href");
 
-			if(href.charAt(0) !== "#"){
-				e.preventDefault();
-				if(ele.attr("data-href")){
-					href = ele.attr("data-href");
+				if(href.charAt(0) !== "#"){
+					e.preventDefault();
+					if(ele.attr("data-href")){
+						href = ele.attr("data-href");
+					}
+					if(theme.navigation.navigations.find(ele).length){
+						theme.navigation.initialNavChange(ele);
+					}
+					theme.history.searchPageLocal(href);
 				}
-				if(theme.navigation.navigations.find(ele).length){
-					theme.navigation.initialNavChange(ele);
-				}
-				theme.history.searchPageLocal(href);
 			}
 		}
 	},
@@ -72,6 +74,7 @@ var theme = {
 			theme.navigation.updateNavigation(page);
 			theme.breadcrumb.renderBreadcrumb(page);
 			theme.template.initPerTemplate(page.template);
+			document.title = page.title;
 			if(newState){
 				this.addState(page, page.title, page.url);
 			}

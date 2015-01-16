@@ -1,0 +1,31 @@
+.services{
+
+	&__above{
+		@extend %grid;
+		@extend %grid--wide;
+	}
+
+	&--half{
+		@extend %grid__item;
+		@extend %bp3--one-half;
+		margin-top: 3em;
+		margin-bottom: 3em;
+	}
+
+	&--full{
+		max-width: 50em;
+		margin-top: 3em;
+		margin-bottom: 3em;
+	}
+}
+
+.Leistungen{
+	ul{
+		@extend %resetList;
+
+		li::before{
+			content:"-";
+			margin-right: .5em;
+		}
+	}
+}
