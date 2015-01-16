@@ -1,6 +1,7 @@
 .siteFooter{
 	background-color: $bgWhite;
 	padding-bottom: 2em;
+	margin-top: 5em;
 
 	@include grid-media-query("bp2"){
 		padding-top: 1em;

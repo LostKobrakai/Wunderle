@@ -1,17 +1,23 @@
-<h1>{{ title }}</h1>
-
 <div class="intro">
 	{{{ intro }}}
 </div>
 
-{{# teams}}
-<h2 class="h5">{{ title }}</h2>
-<table class="{{ name }}">
-{{# items }}
-	<tr>
-		<td>{{ name }}</td>
-		<td>{{ email }}</td>
-	</tr>
-{{/ items }}
-</table>
-{{/ teams}}
+<h1 class="h5">{{ title }}</h1>
+<div class="teamslist">
+	{{# teams}}
+	<div class="teamslist--item">
+		<h2 class="h6">{{ title }}</h2>
+		<table class="table-1-1 {{ name }}">
+		{{# items }}
+			<tr>
+				<td>{{ name }}</td>
+				<td>{{ email }}</td>
+			</tr>
+		{{/ items }}
+		</table>
+	</div>
+	{{# break_after }}
+	<hr />
+	{{/ break_after }}
+	{{/ teams}}
+</div>

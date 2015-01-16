@@ -13,7 +13,8 @@ $templateData = array(
 		array(
 			'title' => $page->fields->get("office")->label,
 			'name' => 'office',
-			'items' => $page->office->getArray()
+			'items' => $page->office->getArray(),
+			'break_after' => true
 		),
 		array(
 			'title' => $page->fields->get("architects")->label,

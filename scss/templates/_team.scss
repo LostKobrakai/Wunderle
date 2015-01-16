@@ -1,0 +1,24 @@
+.teamslist{
+	column-count: 2;
+
+	&--item{
+		-webkit-column-break-inside: avoid;
+		page-break-inside: avoid;
+		break-inside: avoid;
+		padding-top: 1px;
+
+		h2{
+			@extend %uppercase;
+		}
+	}
+
+	hr{
+		visibility: hidden;
+		margin: 0;
+		padding: 0;
+		height: 0;
+		-webkit-column-break-after: always;
+		page-break-after: always;
+		break-after: always;
+	}
+}
