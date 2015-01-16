@@ -21,8 +21,13 @@
 		position: relative;
 	}
 
-	&__firstlevel > li > a{
-		@extend %uppercase;
+	&__firstlevel > li{
+
+		& > a{
+			@extend %uppercase;
+		}
+
+		max-width: 120px;
 	}
 
 	li{
@@ -46,9 +51,9 @@
 		.nav-aside{
 			display: none;
 			position: absolute; 
-			left: 140px;
+			left: 120px;
 			bottom: 0;
-			padding-left: 10px;
+			padding-left: 30px;
 
 			ul{
 				position: absolute;
