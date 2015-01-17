@@ -3,6 +3,10 @@
 	padding-bottom: 1em;
 	border-bottom: 1px solid $fontLightGray;
 
+	.content{
+		overflow: hidden;
+	}
+
 	.h4{
 		@extend %uppercase;
 		font-weight: normal;

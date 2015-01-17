@@ -3,8 +3,12 @@ a, a:link, a:visited{
 }
 
 a:hover,
-a:active,
 a:focus{
+	color: $fontDarkGray;
+	text-decoration: underline;
+}
+
+a:active{
 	color: $fontDarkGray;
 	text-decoration: underline;
 }

@@ -25,6 +25,7 @@ var theme = {
 
 		$(window).ready(function(){
 			theme.template.initStartTemplate();
+			theme.rendering.currentTemplate = theme.initTemplate;
 		});
 	},
 
@@ -36,7 +37,7 @@ var theme = {
 
 		statePoped: function(e){
 			if(e.state){
-				theme.history.renderState(e.state, false);
+				theme.rendering.renderMustache(e.state);
 			}
 		},
 
@@ -53,30 +54,98 @@ var theme = {
 					if(theme.navigation.navigations.find(ele).length){
 						theme.navigation.initialNavChange(ele);
 					}
-					theme.history.searchPageLocal(href);
+					theme.rendering.preRendering(href, ele.attr("data-template"));
 				}
 			}
 		}
 	},
 
-	history: {
-		renderState: function(page, newState){
-			if(theme.breadcrumb.container.css("visibility") === "hidden"){
-				theme.breadcrumb.container.css("visibility", "visible");
-			}
+	rendering: {
+		currentTemplate: null,
 
-			// Render content with mustache
+		preRendering: function(url, template){
+			theme.contentContainer.css("opacity", "0.4");
+
+			//Do I need to search for JSON Data?
+			if(this.currentTemplate == "projects" && ["projects", "project-category"].indexOf(template) !== -1){
+				console.log(this.currentTemplate+" -> "+template);
+				this.renderProjectCategorySwitch(template, url);
+			}else{
+				theme.history.searchPageLocal(url);
+			}
+		},
+
+		renderMustache: function(page){
 			var html = templates[page.template].render(page.data, templates);
 			theme.contentContainer.html(html);
-			theme.contentContainer.css("opacity", "1");
+			this.afterRendering(page);
+		},
 
-			//Update some States
+		renderProjectCategorySwitch: function(template, url){
+			var page = history.state || theme.initData,
+					projects = page.data.projects,
+					inactive = page.data.inactive,
+					attrs,
+					i;
+
+			if(template === "projects"){
+				for (i = inactive.length - 1; i >= 0; i--) {
+					if(inactive[i].meta_type.url === url){
+						projects.push(inactive[i]);
+						inactive.splice(i, 1);
+					}
+				}
+
+				for (i = projects.length - 1; i >= 0; i--) {
+					attrs = [];
+					attrs.push("position: absolute");
+					attrs.push("width: "+projects[i].width()+"px");
+					attrs.push("height: "+projects[i].height()+"px");
+					attrs.push("width: "+projects[i].width()+"px");
+					projects[i].attr("data-style", attrs.join("; "));
+					console.log($("#item_"+projects[i].data.id).offset());
+				}
+			}else{
+				for (i = projects.length - 1; i >= 0; i--) {
+					console.log($("#item_"+projects[i].id).offset());
+					if(projects[i].meta_type.url !== url){
+						inactive.push(projects[i]);
+						projects.splice(i, 1);
+					}
+				}
+				for (i = inactive.length - 1; i >= 0; i--) {
+					if(inactive[i].meta_type.url === url){
+						projects.push(inactive[i]);
+						inactive.splice(i, 1);
+					}
+				}
+			}
+
+			for (i = 0; i < projects.length; i++) {
+				//projects[i]
+			}
+
+			page.template = "projects";
+			this.afterRendering(page);
+			theme.history.addState(page, page.title, page.url);
+		},
+
+		afterRendering: function(page){
+			theme.contentContainer.css("opacity", "1");
+			this.currentTemplate = page.template;
 			theme.navigation.updateNavigation(page);
 			theme.breadcrumb.renderBreadcrumb(page);
-			theme.template.initPerTemplate(page.template);
 			document.title = page.title;
+			theme.template.initPerTemplate(page.template);
+		}
+	},
+
+	history: {
+		renderState: function(page, newState){
 			if(newState){
 				this.addState(page, page.title, page.url);
+			}else{
+				theme.rendering.renderMustache(page);
 			}
 		},
 
@@ -89,10 +158,12 @@ var theme = {
 		},
 
 		searchPageLocal: function(url){
-			theme.contentContainer.css("opacity", "0.4");
+			// TODO: Add cache expiring
+
 			if(typeof tree[url] !== 'undefined'){
 				var page = tree[url];
-				this.renderState(page, true);
+				theme.rendering.renderMustache(page);
+				theme.history.addState(page, page.title, page.url);
 			}else{
 				this.loadPage(url);
 			}
@@ -101,7 +172,8 @@ var theme = {
 		loadPage: function(url){
 			$.getJSON(url, function(page){
 				tree[page.url] = page;
-				theme.history.renderState(page, true);
+				theme.rendering.renderMustache(page);
+				theme.history.addState(page, page.title, page.url);
 			});
 		}
 	},
@@ -112,6 +184,19 @@ var theme = {
 		renderBreadcrumb: function(page){
 			var breadcrumb = templates.breadcrumb.render({parents: page.parents, current: page});
 			this.container.html(breadcrumb);
+			this.showBreadcrumb();
+		},
+
+		hideBreadcrumb: function(){
+			if(this.container.css("visibility") !== "hidden"){
+				this.container.css("visibility", "hidden");
+			}
+		},
+
+		showBreadcrumb: function(){
+			if(this.container.css("visibility") === "hidden"){
+				this.container.css("visibility", "visible");
+			}
 		}
 	},
 
@@ -160,23 +245,55 @@ var theme = {
 
 		initHome: function(){
 
-			theme.breadcrumb.container.css("visibility", "hidden");
+			theme.breadcrumb.hideBreadcrumb();
 
-			function toggle(){
-				var ele = $(this);
+			function toggle(e){
+				var ele = $(this),
+						content = ele.find(".content").first(),
+						height,
+						duration = 200;
+
+				if(e === undefined || e === false || e === null){
+					duration = 0;
+				}
+
 				if(ele.hasClass("js-open")){ // Close
-					ele.find(".content").children().hide();
+					height = "0px";
+
 					if(ele.is(":first-child")){
-						ele.find(".content").children().first().show();
-						ele.find(".content").children().eq(2).show();
+						var children = content.children();
+						children.not(children.first()).not(children.eq(1)).hide();
+						height = content.height();
+						children.show();
 					}
 
-					ele.find(".js-togglenews").text("Artikel lesen");
-					ele.removeClass("js-open");
+					content.velocity(
+						{
+							height: height
+						}, {
+							duration: duration,
+							easing: "ease-in-out",
+							complete: function(){
+								ele.find(".js-togglenews").text("Artikel lesen");
+								ele.removeClass("js-open");
+							}
+					});
 				}else{ // Open
-					ele.find(".content").children().show();
-					ele.find(".js-togglenews").text("Schließen");
-					ele.addClass("js-open");
+					var old = content.height();
+					height = content.removeAttr("style").height();
+
+					content.css("height", old).velocity(
+						{
+							height: height
+						}, {
+							duration: duration,
+							easing: "ease-in-out",
+							complete: function(){
+								ele.find(".js-togglenews").text("Schließen");
+								ele.addClass("js-open");
+								content.removeAttr("style");
+							}
+					});
 				}
 			}
 
@@ -185,9 +302,6 @@ var theme = {
 			for (var i = articles.length - 1; i >= 0; i--) {
 				toggle.apply(articles.eq(i), []);
 			}
-
-			//articles.eq(0).find(".content").children().first().show();
-			//articles.eq(0).find(".content").children().eq(2).show();
 		}
 	}
 };

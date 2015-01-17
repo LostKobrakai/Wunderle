@@ -7,6 +7,7 @@ $projects = [];
 
 foreach($page->find("template=project, sort=sort") as $p){
 	$projects[] = array(
+		'id' => $p->id,
 		'title' => $p->title,
 		'url' => $p->url,
 		'image' => array(
@@ -25,6 +26,7 @@ $inactive = [];
 
 foreach($page->parent->find("parent_id!=$page->id, template=project") as $p){
 	$inactive[] = array(
+		'id' => $p->id,
 		'title' => $p->title,
 		'url' => $p->url,
 		'image' => array(
