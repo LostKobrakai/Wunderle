@@ -21,8 +21,13 @@ foreach($page->find("template=project, sort=sort") as $p){
 
 $templateData = array(
 	'title' => $page->title,
-	'types' => $page->children->explode("title"),
+	'types' => $page->children->explode(function($item){
+		return array(
+			'title' => $item->title,
+			'url' => $item->url,
+			'id' => $item->id
+		);
+	}),
 	'status' => $pages->find("parent_id=1027")->explode("title"),
-	'projects' => $projects,
-	'inactive' => array()
+	'projects' => $projects
 );

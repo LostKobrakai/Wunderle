@@ -22,10 +22,8 @@ foreach($page->find("template=project, sort=sort") as $p){
 	);
 }
 
-$inactive = [];
-
 foreach($page->parent->find("parent_id!=$page->id, template=project") as $p){
-	$inactive[] = array(
+	$projects[] = array(
 		'id' => $p->id,
 		'title' => $p->title,
 		'url' => $p->url,
@@ -37,14 +35,20 @@ foreach($page->parent->find("parent_id!=$page->id, template=project") as $p){
 			'title' => $p->meta_type->title,
 			'url' => $p->meta_type->url
 		),
-		'meta_status' => $p->meta_status ? $p->meta_status->title : ""
+		'meta_status' => $p->meta_status ? $p->meta_status->title : "",
+		'inactive' => true
 	);
 }
 
 $templateData = array(
 	'title' => $page->title,
-	'types' => $page->parent->children->explode("title"),
+	'types' => $page->children->explode(function($item){
+		return array(
+			'title' => $item->title,
+			'url' => $item->url,
+			'id' => $item->id
+		);
+	}),
 	'status' => $pages->find("parent_id=1027")->explode("title"),
-	'projects' => $projects,
-	'inactive' => $inactive
+	'projects' => $projects
 );

@@ -4,15 +4,17 @@ class FrontendPage {
 	public $url;
 	public $parents;
 	public $template;
+	public $renderAs;
 	public $title;
 	public $data;
 	public $cache;
 
-	function __construct(Page $page, $data, $template = null){
+	function __construct(Page $page, $data, $renderAs){
 		$this->id = $page->id;
 		$this->url = $page->url;
 		$this->title = $page->title;
-		$this->template = $template ? $template : $page->template->name;
+		$this->template = $page->template->name;
+		$this->renderAs = $renderAs ? $renderAs : $page->template->name;
 		$this->data = $data;
 		$this->cache = time();
 		

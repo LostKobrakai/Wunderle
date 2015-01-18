@@ -143,6 +143,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/libs\/isotope.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/js\/libs\/isotope.min.js",
+		"outputAbbreviatedPath": "\/js\/libs\/min\/isotope.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/libs\/pointerevents.min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -2152,7 +2163,7 @@
 			"flagValue": -1
 			},
 		"loopfunc": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"maxcomplexity": {
@@ -2370,7 +2381,7 @@
 			"flagValue": -1
 			},
 		"plusplus": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"properties": {

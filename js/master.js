@@ -1,7 +1,6 @@
 var Mustache = Mustache || null,
-		Modernizr = Modernizr || null;
-
-var tree = [];
+		Modernizr = Modernizr || null,
+		tree = [];
 
 var theme = {
 	contentContainer: null,
@@ -54,7 +53,7 @@ var theme = {
 					if(theme.navigation.navigations.find(ele).length){
 						theme.navigation.initialNavChange(ele);
 					}
-					theme.rendering.preRendering(href, ele.attr("data-template"));
+					theme.rendering.preRendering(href, ele.attr("data-template"), ele.text());
 				}
 			}
 		}
@@ -63,69 +62,116 @@ var theme = {
 	rendering: {
 		currentTemplate: null,
 
-		preRendering: function(url, template){
+		preRendering: function(url, template, title){
 			theme.contentContainer.css("opacity", "0.4");
 
 			//Do I need to search for JSON Data?
-			if(this.currentTemplate == "projects" && ["projects", "project-category"].indexOf(template) !== -1){
+			if(["projects", "project-category"].indexOf(this.currentTemplate) !== -1 && ["projects", "project-category"].indexOf(template) !== -1){
 				console.log(this.currentTemplate+" -> "+template);
-				this.renderProjectCategorySwitch(template, url);
+				this.renderProjectCategorySwitch(template, url, title);
 			}else{
 				theme.history.searchPageLocal(url);
 			}
 		},
 
 		renderMustache: function(page){
-			var html = templates[page.template].render(page.data, templates);
+			var html = templates[page.renderAs].render(page.data, templates);
 			theme.contentContainer.html(html);
 			this.afterRendering(page);
 		},
 
-		renderProjectCategorySwitch: function(template, url){
+		renderProjectCategorySwitch: function(template, url, title){
 			var page = history.state || theme.initData,
 					projects = page.data.projects,
-					inactive = page.data.inactive,
-					attrs,
+					//currentUrl = window.location.pathname,
+					current, offset, oldPos = [], newPos = [],
 					i;
 
 			if(template === "projects"){
-				for (i = inactive.length - 1; i >= 0; i--) {
-					if(inactive[i].meta_type.url === url){
-						projects.push(inactive[i]);
-						inactive.splice(i, 1);
-					}
-				}
+				page.parents.length = 1;
 
 				for (i = projects.length - 1; i >= 0; i--) {
-					attrs = [];
-					attrs.push("position: absolute");
-					attrs.push("width: "+projects[i].width()+"px");
-					attrs.push("height: "+projects[i].height()+"px");
-					attrs.push("width: "+projects[i].width()+"px");
-					projects[i].attr("data-style", attrs.join("; "));
-					console.log($("#item_"+projects[i].data.id).offset());
+					projects[i].inactive = false;
 				}
 			}else{
-				for (i = projects.length - 1; i >= 0; i--) {
-					console.log($("#item_"+projects[i].id).offset());
-					if(projects[i].meta_type.url !== url){
-						inactive.push(projects[i]);
-						projects.splice(i, 1);
-					}
+				if(this.currentTemplate === "projects"){
+					page.parents.length = 2;
+					page.parents.push({
+						title: page.title,
+						url: page.url
+					});
 				}
-				for (i = inactive.length - 1; i >= 0; i--) {
-					if(inactive[i].meta_type.url === url){
-						projects.push(inactive[i]);
-						inactive.splice(i, 1);
+
+				for (i = projects.length - 1; i >= 0; i--) {
+					if(projects[i].meta_type.url !== url){
+						projects[i].inactive = true;
+					}else{
+						projects[i].inactive = false;
 					}
 				}
 			}
+			page.parents = page.parents.filter(function(){return true;});
+
+			projects.sort(function(a, b){
+				if(a.inactive && !b.inactive){
+					return 1;
+				}else if(!a.inactive && b.inactive){
+					return -1;
+				}else{
+					return a.title > b.title ? 1 : -1;
+				}
+			});
 
 			for (i = 0; i < projects.length; i++) {
-				//projects[i]
+				current = $("#item_"+projects[i].id).closest("li");
+				if(projects[i].inactive && !current.hasClass("inactive")){
+					current.addClass("inactive");
+				}else if(!projects[i].inactive && current.hasClass("inactive")){
+					current.removeClass("inactive");
+				}
+				offset = current.offset();
+
+				oldPos[i] = {
+					'position': 'absolute',
+					'top': offset.top+"px",
+					'left': offset.left+"px",
+					'width': offset.width+"px",
+					'height': offset.height+"px"
+				};
+
+				current.remove().appendTo($(".gridlist").eq(0));
+			}
+			for (i = 0; i < projects.length; i++) {
+				current = $("#item_"+projects[i].id).closest("li");
+				current.removeAttr("style");
+				offset = current.offset();
+				newPos[i] = {
+					'top': offset.top+"px",
+					'left': offset.left+"px"
+				};
+
+				if(i == 1){
+					console.log(oldPos[i].top+" -> "+newPos.top);
+					console.log(oldPos[i].left+" -> "+newPos.left);
+				}
+
+				
+			}
+			for (i = 0; i < projects.length; i++) {
+				current = $("#item_"+projects[i].id).closest("li");
+				current.css(oldPos[i]).velocity(newPos[i], {
+					duration: 200,
+					complete: function(ele){
+						$(ele).removeAttr("style");
+					}
+				});
 			}
 
-			page.template = "projects";
+
+			page.url = url;
+			page.template = template;
+			page.title = title;
+			page.projects = projects;
 			this.afterRendering(page);
 			theme.history.addState(page, page.title, page.url);
 		},

@@ -3,7 +3,7 @@
 	<select>
 		<option></option>
 		{{#types}}
-		<option>{{.}}</option>
+		<option>{{title}}</option>
 		{{/types}}
 	</select>
 	<select>
@@ -16,16 +16,16 @@
 </form>
 <ul class="gridlist">
 {{#projects}}
-	<li>{{> listproject}}
+	{{# inactive }}
+	<li class="inactive">
+	{{/ inactive }}
+	{{^ inactive }}
+	<li>
+	{{/ inactive }}
+		{{> listproject}}
 {{/projects}}
 {{^projects}}
 	<li>
 		<p>Nothing found.</p>
 {{/projects}}
-</ul>
-
-<ul class="gridlist gridlist--inactive">
-{{#inactive}}
-	<li>{{> listproject}}
-{{/inactive}}
 </ul>
