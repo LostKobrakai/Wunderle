@@ -141,6 +141,7 @@ var theme = {
 
 				current.remove().appendTo($(".gridlist").eq(0));
 			}
+			
 			for (i = 0; i < projects.length; i++) {
 				current = $("#item_"+projects[i].id).closest("li");
 				current.removeAttr("style");
@@ -149,14 +150,8 @@ var theme = {
 					'top': offset.top+"px",
 					'left': offset.left+"px"
 				};
-
-				if(i == 1){
-					console.log(oldPos[i].top+" -> "+newPos.top);
-					console.log(oldPos[i].left+" -> "+newPos.left);
-				}
-
-				
 			}
+
 			for (i = 0; i < projects.length; i++) {
 				current = $("#item_"+projects[i].id).closest("li");
 				current.css(oldPos[i]).velocity(newPos[i], {

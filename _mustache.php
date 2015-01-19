@@ -21,7 +21,7 @@
 	$breadcrumb_markup = $tpl->render(array('parents' => $breadcrumb, 'current' => array($current)));
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo $page->title; ?></title>
