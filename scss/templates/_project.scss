@@ -1,0 +1,57 @@
+.project{
+	margin-top: 7em;
+
+	&__header{
+		margin-bottom: 3em;
+
+		p, h1{
+			margin: 0;
+		}
+	}
+
+	&__info{
+		@extend %grid;
+		@extend %grid--rev;
+		@extend %grid--wide;
+
+		margin-bottom: 6em;
+	}
+
+	&__image,
+	&__text{
+		@extend %grid__item;
+		@extend %bp3--one-half;
+
+		img{
+			display: block;
+			margin-bottom: 2em;
+		}
+	}
+
+	&__text{
+		& > p:first-child{
+			margin-top: 0;
+		}
+	}
+
+	&__gallery{
+		max-width: 65em;
+		margin-top: 2em;
+
+		img{
+			display: block;
+			margin-bottom: 2em;
+		}
+	}
+
+	& > .metadata{
+		max-width: 65em;
+	}
+
+	@include grid-media-query("bp5"){
+		&__image{
+			position: relative;
+			left: 100px;
+		}
+	}
+}

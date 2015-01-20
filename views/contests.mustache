@@ -1,12 +1,8 @@
-<h1>{{ title }}</h1>
-<form>
-	<select>
-		<option></option>
-		{{#status}}
-		<option>{{.}}</option>
-		{{/status}}
-	</select>
-	<input type="text" placeholder="Suche…">
+<h1 class="is-vishidden">{{ title }}</h1>
+<form class="filter-form">
+	<div class="totheright">
+		<input type="text" placeholder="Suche…">
+	</div>
 </form>
 <ul class="gridlist">
 {{#projects}}

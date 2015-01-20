@@ -2,9 +2,10 @@ var canvas = {
 	init: function(){
 		var ele;
 
-		ele = document.querySelector(".canvas");
-		if(ele){
-			this.play(ele);
+		ele = $("div.canvas");
+		console.log(ele);
+		if(ele.length){
+			this.play(ele[0]);
 		}
 	},
 
@@ -21,6 +22,7 @@ var canvas = {
 
 		// Make an instance of two and place it on the page.
 		params = { width: 1100, height: 300, steps: 100, type: Two.Types.canvas };
+		console.log(ele);
 		two = new Two(params).appendTo(ele);
 		canvas = document.querySelector("canvas");
 		rectangles = [];

@@ -60,3 +60,17 @@ main{
 // 		padding-right: 0;
 // 	}
 // }
+
+.telephone-spacing{
+	margin-right: .2em;
+}
+
+.hyphen-spacing{
+	margin: 0 .1em;
+}
+
+hr{
+	height: 1px;
+	background-color: $fontLightGray;
+	border: 0;
+}

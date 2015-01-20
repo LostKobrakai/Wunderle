@@ -1,14 +1,15 @@
 .teamslist{
-	column-count: 2;
+	column-count: 1;
 
 	&--item{
 		-webkit-column-break-inside: avoid;
 		page-break-inside: avoid;
 		break-inside: avoid;
 		padding-top: 1px;
+		margin-bottom: 2em;
 
-		h2{
-			@extend %uppercase;
+		& > h2{
+			margin-bottom: 0.5em;
 		}
 	}
 
@@ -20,5 +21,11 @@
 		-webkit-column-break-after: always;
 		page-break-after: always;
 		break-after: always;
+	}
+}
+
+@include grid-media-query("bp3"){
+	.teamslist{
+		column-count: 2;
 	}
 }

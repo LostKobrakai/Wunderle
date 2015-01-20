@@ -6,8 +6,8 @@ $mobile-first: true;
 $gutter: 20px;
 $use-silent-classes: true;
 
-$push: false;
-$pull: false;
+$push: true;
+$pull: true;
 
 $use-markup-fix: true;
 
@@ -39,5 +39,5 @@ $breakpoints: append($breakpoints, $first, "comma");
 	}
 }
 
-$breakpoint-has-push:	();
+$breakpoint-has-push:	("bp3");
 $breakpoint-has-pull:	();

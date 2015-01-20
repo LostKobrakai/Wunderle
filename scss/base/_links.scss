@@ -2,13 +2,13 @@ a, a:link, a:visited{
 	color: $baseFontColor;
 }
 
-a:hover,
-a:focus{
+a:hover{
 	color: $fontDarkGray;
 	text-decoration: underline;
 }
 
+a:focus,
 a:active{
 	color: $fontDarkGray;
-	text-decoration: underline;
+	text-decoration: none;
 }

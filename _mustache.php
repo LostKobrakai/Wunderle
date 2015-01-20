@@ -30,7 +30,7 @@
 	</head>
 	<body>
 		<header class="siteHeader">
-			<a href="<?php echo $homepage->url; ?>" data-template="<?php echo $homepage->template->name; ?>" class="logo logo--bigmargin">
+			<a href="<?php echo $homepage->url; ?>" data-template="<?php echo $homepage->template->name; ?>" class="logo">
 				<span class="logo--bold">
 					Wunderle + Partner
 				</span>
@@ -93,7 +93,15 @@
 		<script type="text/javascript">
 			<?php echo "theme.initTemplate = \"".$page->template->name."\";"; ?>
 			<?php if(in_array($template, array("projects", "project-category"))) echo "theme.initData = ".json_encode(new FrontendPage($page, $templateData, $template)).";"; ?>
+			<?php 
+				echo "theme.projectimages=[";
+				foreach($pages->find("template=project") as $project) {
+					echo "{'title': '".$project->title."', 'img': '".$project->project_images->first()->url."'}, ";
+				}
+				echo "];";
+			?>
 		</script>
-		<!-- <script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script> -->
+		<script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js" type="text/javascript"></script>
 	</body>
 </html>

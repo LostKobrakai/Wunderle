@@ -1,0 +1,15 @@
+.filter-form{
+	@extend %grid;
+	margin-top: 6em;
+	margin-bottom: 3em;
+
+	.totheright{
+		@extend %grid__item;
+		@extend %bp3--one-third;
+		@extend %push--bp3--two-thirds;
+	}
+
+	input{
+		width: 100%;
+	}
+}

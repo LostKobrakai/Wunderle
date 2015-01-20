@@ -1,5 +1,6 @@
 .partners{
 	@extend %grid;
+	margin-top: 1.2em;
 
 	& > li{
 		@extend %grid__item;
@@ -23,6 +24,10 @@
 	}
 }
 
+.position, .degree{
+	@include fontSize(11px);
+}
+
 @include grid-media-query("bp3"){
 	.position{
 		display: none;
@@ -30,6 +35,10 @@
 }
 
 @include grid-media-query("bp3"){
+	.partners{
+		margin-bottom: 10em;
+	}
+
 	.flexbox .partners > li{
 		order: 0 !important;
 	}

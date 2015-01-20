@@ -8,3 +8,21 @@ table{
 		width: 50%;
 	}
 }
+
+.table-1-2{
+	td:first-child{
+		width: 33.3333%
+	}
+	td:last-child{
+		width: 66.6666%;
+	}
+}
+
+.table-40-60{
+	td:first-child{
+		width: 40%
+	}
+	td:last-child{
+		width: 60%;
+	}
+}

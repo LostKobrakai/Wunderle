@@ -22,7 +22,8 @@
 		transform: .25s;
 	}
 
-	& > .inactive{
+	&--inactive{
+		margin-top: 10em;
 		opacity: .5;
 		img{
 			filter: url(filters.svg#grayscale); /* Firefox 3.5+ */

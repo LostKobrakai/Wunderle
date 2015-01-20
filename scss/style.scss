@@ -38,6 +38,7 @@
 @import "base/headlines";
 @import "base/media";
 @import "base/tables";
+@import "base/form";
 
 //------------------------------------------------------------------------------
 //
@@ -66,6 +67,8 @@
 @import "components/navigation";
 @import "components/news";
 @import "components/intro";
+@import "components/map";
+@import "components/filter";
 
 //------------------------------------------------------------------------------
 //
@@ -77,8 +80,10 @@
 
 @import "templates/home";
 @import "templates/partners";
+@import "templates/project";
 @import "templates/team";
 @import "templates/services";
+@import "templates/contact";
 
 //------------------------------------------------------------------------------
 //

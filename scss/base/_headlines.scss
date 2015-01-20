@@ -26,3 +26,24 @@ h5, .h5{
 h6, .h6{
 	@include fontSize(14px);
 }
+
+.headline_1{
+	@include fontSize(21px);
+	font-weight: bold;
+}
+
+.headline_2{
+	@include fontSize(18px);
+	@extend %uppercase;
+	font-weight: normal;
+}
+
+.headline_3{
+	@include fontSize(14px);
+	@extend %uppercase;
+	font-weight: normal;
+}
+
+.no-margin{
+	margin-bottom: 0;
+}

@@ -48,7 +48,7 @@
 //
 //------------------------------------------------------------------------------
 
-.project{
+.listproject{
 	@extend .resp;
 	@extend .resp--1x1;
 
@@ -67,7 +67,7 @@
 		padding: 2em;
 	}
 
-	h1{
+	h2{
 		@include fontSize(14px);
 	}
 }

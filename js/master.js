@@ -63,6 +63,9 @@ var theme = {
 		currentTemplate: null,
 
 		preRendering: function(url, template, title){
+			if(url === window.location.pathname){
+				return false;
+			}
 			theme.contentContainer.css("opacity", "0.4");
 
 			//Do I need to search for JSON Data?
@@ -85,6 +88,7 @@ var theme = {
 					projects = page.data.projects,
 					//currentUrl = window.location.pathname,
 					current, offset, oldPos = [], newPos = [],
+					container = $(".gridlist"),
 					i;
 
 			if(template === "projects"){
@@ -139,7 +143,11 @@ var theme = {
 					'height': offset.height+"px"
 				};
 
-				current.remove().appendTo($(".gridlist").eq(0));
+				if(!projects[i].inactive){
+					current.remove().appendTo($(".gridlist").eq(0));
+				}else{
+					current.remove().appendTo($(".gridlist--inactive").eq(0));
+				}
 			}
 			
 			for (i = 0; i < projects.length; i++) {
@@ -152,6 +160,11 @@ var theme = {
 				};
 			}
 
+			container.css("height", container.height());
+			window.setTimeout(function(){
+				container.removeAttr("style");
+			}, 230);
+
 			for (i = 0; i < projects.length; i++) {
 				current = $("#item_"+projects[i].id).closest("li");
 				current.css(oldPos[i]).velocity(newPos[i], {
@@ -161,6 +174,8 @@ var theme = {
 					}
 				});
 			}
+
+			$("h1").text(title);
 
 
 			page.url = url;
@@ -281,6 +296,8 @@ var theme = {
 		initPerTemplate: function(template){
 			if(template == "home"){
 				this.initHome();
+			}else if(template === "contact"){
+				this.initContact();
 			}
 		},
 
@@ -342,6 +359,37 @@ var theme = {
 
 			for (var i = articles.length - 1; i >= 0; i--) {
 				toggle.apply(articles.eq(i), []);
+			}
+		},
+
+		initContact: function(){
+
+			function initMap(){
+				var L = window.L || null;
+				// create a map in the "map" div, set the view to a given place and zoom
+				var map = L.map('map').setView([48.37628, 10.8350], 15);
+
+				// add an OpenStreetMap tile layer
+				L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+							maxZoom: 18,
+							attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+								'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+								'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+							id: 'examples.map-i875mjb7'
+						}).addTo(map);
+
+				// add a marker in the given location, attach some popup content to it and open the popup
+				L.marker([48.37628, 10.82801]).addTo(map)
+				    .bindPopup('<b>WUNDERLE + PARTNER</b> Architekten <br> Am Dreieck 6<br>86356 Neusäß/Steppach')
+				    .openPopup();
+			}
+
+			if(window.L !== undefined){
+				initMap();
+			}else{
+				$(window).ready(function(){
+					initMap();
+				});
 			}
 		}
 	}

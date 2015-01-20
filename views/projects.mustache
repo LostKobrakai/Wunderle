@@ -1,31 +1,28 @@
-<h1>{{ title }}</h1>
-<form>
-	<select>
-		<option></option>
-		{{#types}}
-		<option>{{title}}</option>
-		{{/types}}
-	</select>
-	<select>
-		<option></option>
-		{{#status}}
-		<option>{{.}}</option>
-		{{/status}}
-	</select>
-	<input type="text" placeholder="Suche…">
+<h1 class="is-vishidden">{{ title }}</h1>
+<form class="filter-form">
+	<div class="totheright">
+		<input type="text" placeholder="Suche…">
+	</div>
 </form>
 <ul class="gridlist">
 {{#projects}}
-	{{# inactive }}
-	<li class="inactive">
-	{{/ inactive }}
 	{{^ inactive }}
 	<li>
-	{{/ inactive }}
 		{{> listproject}}
+	{{/ inactive }}
 {{/projects}}
 {{^projects}}
 	<li>
 		<p>Nothing found.</p>
+{{/projects}}
+</ul>
+
+
+<ul class="gridlist gridlist--inactive">
+{{#projects}}
+	{{# inactive }}
+	<li>
+		{{> listproject}}
+	{{/ inactive }}
 {{/projects}}
 </ul>
