@@ -27,7 +27,8 @@ $templateData = array(
 			'url' => $img->url,
 			'desc' => $img->description,
 			'first' => $img === wire("page")->project_images->first(),
-			'second' => $img === wire("page")->project_images->eq(1)
+			'second' => $img === wire("page")->project_images->eq(1),
+			'gallery' => $img !== wire("page")->project_images->eq(1) && $img !== wire("page")->project_images->eq(0)
 		);
 	})),
 	'meta' => $meta

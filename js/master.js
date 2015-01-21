@@ -8,6 +8,7 @@ var theme = {
 	win: null,
 
 	init: function(){
+		console.log("init");
 		this.breadcrumb.container = $(".breadcrumb").first();
 		this.win = $(window);
 		this.contentContainer = $("#content");
@@ -23,6 +24,7 @@ var theme = {
 		this.listeners.init();
 
 		$(window).ready(function(){
+			console.log("ready");
 			theme.template.initStartTemplate();
 			theme.rendering.currentTemplate = theme.initTemplate;
 		});
@@ -70,7 +72,6 @@ var theme = {
 
 			//Do I need to search for JSON Data?
 			if(["projects", "project-category"].indexOf(this.currentTemplate) !== -1 && ["projects", "project-category"].indexOf(template) !== -1){
-				console.log(this.currentTemplate+" -> "+template);
 				this.renderProjectCategorySwitch(template, url, title);
 			}else{
 				theme.history.searchPageLocal(url);
@@ -294,6 +295,7 @@ var theme = {
 		},
 
 		initPerTemplate: function(template){
+			console.log("initTemplate");
 			if(template == "home"){
 				this.initHome();
 			}else if(template === "contact"){
@@ -355,6 +357,11 @@ var theme = {
 				}
 			}
 
+			if(window.canvas !== undefined){
+				window.canvas.init();
+				console.log(window.canvas);
+			}
+
 			var articles = $(".news").addClass("js-open").on("click", toggle);
 
 			for (var i = articles.length - 1; i >= 0; i--) {
@@ -367,7 +374,7 @@ var theme = {
 			function initMap(){
 				var L = window.L || null;
 				// create a map in the "map" div, set the view to a given place and zoom
-				var map = L.map('map').setView([48.37628, 10.8350], 15);
+				var map = L.map('map', {scrollWheelZoom: false}).setView([48.37628, 10.8350], 15);
 
 				// add an OpenStreetMap tile layer
 				L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
