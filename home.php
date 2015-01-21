@@ -1,6 +1,18 @@
 <?php 
 
 $news = [];
+$slides = [];
+
+foreach($page->slider as $n){
+	$slides[] = array(
+		'title' => $n->title,
+		'url' => $n->url,
+		'image' => array(
+			'url' => $n->project_images->eq(0)->url,
+			'desc' => $n->project_images->eq(0)->description
+		)
+	);
+}
 
 foreach($pages->find("template=news, sort=-date") as $n){
 	$news[] = array(
@@ -13,5 +25,6 @@ foreach($pages->find("template=news, sort=-date") as $n){
 
 $templateData = array(
 	'title' => $page->title,
-	'news' => $news
+	'news' => $news,
+	'slides' => $slides
 );

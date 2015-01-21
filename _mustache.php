@@ -101,7 +101,7 @@
 				echo "];";
 			?>
 		</script>
-		<script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script>
+		<!-- <script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script> -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js" type="text/javascript"></script>
 	</body>
 </html>

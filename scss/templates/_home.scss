@@ -1,3 +1,37 @@
-.news-wrapper{
+.articles,
+.slide-wrapper{
 	margin-left: 250px;
+}
+
+.side-headlines{
+	@extend .headline_3;
+	margin-bottom: -.6em;
+}
+
+.slideshow{
+	position: relative;
+
+	.active{
+		position: static;
+		z-index: 3;
+	}
+}
+
+.slide .side-headlines{
+	position: absolute;
+	left: 0;
+	max-width: 250px;
+}
+
+.slide{
+	display: none;
+
+	&:first-child{
+		display: block;
+	}
+}
+
+.slide-imagewrapper{
+	overflow: hidden;
+	position: relative;
 }

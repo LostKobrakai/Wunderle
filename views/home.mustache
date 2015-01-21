@@ -1,10 +1,24 @@
-<div class="canvas">
-</div>
+{{! <div class="canvas">
+</div> }}
 
 <h1 class="is-vishidden">{{ title }}</h1>
 
+<section class="slideshow">
+	<h2 class="is-vishidden">Projekte</h2>
+	<div class="slide-wrapper">
+	{{# slides }}
+		<div class="slide">
+			<h3 class="side-headlines"><a href='{{ url }}'>{{ title }}</a></h3>
+			<div class="slide-imagewrapper">
+				<img src="{{ image.url }}" alt="{{ image.desc }}" />
+			</div>
+		</div>
+	{{/ slides }}	
+	</div>
+</section>
+
 <section class="news-wrapper">
-	<h2 class="is-vishidden">News</h2>
+	<h2 class="side-headlines">Aktuelles</h2>
 	<div class="articles">
 	{{#news}}
 		{{> news}}
