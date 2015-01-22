@@ -1,0 +1,26 @@
+.archive{
+	tr{
+		border-bottom: 1px solid $borderColor;
+	}
+
+	th, td{
+		padding: 1em 0;
+	}
+
+	thead th{
+		color: $fontLightGray;
+	}
+
+	th[scope="col"]{
+		font-weight: normal;
+		@extend %uppercase;
+	}
+
+	th[scope="row"]{
+		@include fontSize(16px);
+	}
+
+	tbody > tr:last-child{
+		border-bottom: none;
+	}
+}

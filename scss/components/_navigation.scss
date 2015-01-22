@@ -46,10 +46,10 @@
 			background-color: $bgColor;
 			z-index: 2;
 			height: 8 * 1.4em;
-			min-width: 120px;
 		}
 
 		.nav-aside{
+			min-width: 400px; 
 			display: none;
 			position: absolute; 
 			left: 120px;
@@ -62,4 +62,9 @@
 			}
 		}
 	}
+}
+
+a[data-template="project-archive"]{
+	display: inline-block;
+	margin-top: .5em;
 }

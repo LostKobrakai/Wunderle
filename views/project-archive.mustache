@@ -1,0 +1,35 @@
+<h1 class="is-vishidden">{{ title }}</h1>
+<form class="filter-form">
+	<div class="totheright">
+		<input type="text" placeholder="Suche…">
+	</div>
+</form>
+<table class="archive">
+  <colgroup>
+    <col width="2*">
+    <col width="1*">
+    <col width="1*">
+  </colgroup>
+	<thead>
+		<tr>
+			<th scope="col">Titel</th>
+			<th scope="col">Typ</th>
+			<th scope="col">Status</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#projects}}
+		{{^ inactive }}
+		<tr class="archive__item">
+			<th scope="row">{{ title }}</th>
+			<td>{{ meta_type.title }}</td>
+			<td>{{ meta_status }}</td>
+		</tr>
+		{{/ inactive }}
+	{{/projects}}
+	{{^projects}}
+		<li>
+			<p>Nothing found.</p>
+	{{/projects}}
+	</tbody>
+</table>
