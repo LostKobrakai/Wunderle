@@ -1,5 +1,6 @@
 .teamslist{
 	column-count: 1;
+	max-width: 40em;
 
 	&--item{
 		-webkit-column-break-inside: avoid;
@@ -24,8 +25,8 @@
 	}
 }
 
-@include grid-media-query("bp3"){
-	.teamslist{
-		column-count: 2;
-	}
-}
+// @include grid-media-query("bp3"){
+// 	.teamslist{
+// 		column-count: 2;
+// 	}
+// }

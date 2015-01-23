@@ -1,5 +1,14 @@
 .slideshow{
+	img{
+		display: block;
+	}
+
 	.slide{
+		display: none;
+
+		&:first-child{
+			display: block;
+		}
 
 		&--hidden{
 			display: none;
@@ -8,6 +17,7 @@
 		&--absolute{
 			position: absolute;
 			top: 0;
+			left: 0;
 			width: 100%;
 		}
 	}
