@@ -5,14 +5,22 @@
 
 .side-headlines{
 	@extend .headline_3;
+	@include fontSize(12px);
 	height: 0;
 	margin-bottom: .4em;
-	max-width: 250px;
+	max-width: 230px;
+
+	a{
+		text-decoration: none;
+	}
 }
 
 .slideshow{
 	position: relative;
+
+	margin-bottom: 4em;
 }
+
 
 .slide .side-headlines{
 	position: absolute;

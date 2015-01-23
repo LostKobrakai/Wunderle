@@ -8,7 +8,11 @@ foreach($page->slider as $n){
 		'title' => $n->title,
 		'url' => $n->url,
 		'image' => array(
-			'url' => $n->project_images->eq(0)->url,
+			'url' => $n->project_images->eq(0)->size(850, 567, array(
+				'quality' => 90,
+				'upscaling' => false, 
+				'cropping' => 'center' 
+			))->url,
 			'desc' => $n->project_images->eq(0)->description
 		)
 	);

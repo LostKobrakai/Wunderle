@@ -2,6 +2,7 @@
 
 	//Is ajax call?
 	if($config->ajax){
+		header('Content-type: application/json');
 		echo json_encode(new FrontendPage($page, $templateData, $template));
 		die();
 	}
