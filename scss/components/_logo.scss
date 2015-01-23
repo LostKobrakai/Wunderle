@@ -1,8 +1,5 @@
 .logo{
-	@include fontSize(23px);
-	line-height: 1.1;
 	display: block;
-	text-decoration: none;
 
 	&--bold{
 		@extend %uppercase;
@@ -12,4 +9,10 @@
 	&--light{
 		font-weight: 300;
 	}
+}
+
+header .logo{
+	@include fontSize(23px);
+	line-height: 1.1;
+	text-decoration: none;
 }
