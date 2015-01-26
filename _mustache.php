@@ -26,7 +26,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo $page->title; ?></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1">
 		<link rel="stylesheet" type="text/css" href="<?php echo $config->urls->templates?>style.css" />
 	</head>
 	<body>
@@ -41,6 +41,7 @@
 			</a>
 			<nav class="mainnav">
 				<h1 class="is-vishidden">Mainnavigation</h1>
+				<a href="#footernav" class="js-toggleMobileNav mobileToggle">Menü</a>
 				<ul class="mainnav__firstlevel">
 					<?php foreach($homepage->children as $first) : 
 						$altHref = $first->template->name === "agency" ? "data-href='{$first->child->url}' " : "";

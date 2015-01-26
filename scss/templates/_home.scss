@@ -1,14 +1,5 @@
-.articles,
-.slide-wrapper{
-	margin-left: 250px;
-}
-
 .side-headlines{
 	@extend .headline_3;
-	@include fontSize(12px);
-	height: 0;
-	margin-bottom: .4em;
-	max-width: 230px;
 
 	a{
 		text-decoration: none;
@@ -17,12 +8,24 @@
 
 .slideshow{
 	position: relative;
-
 	margin-bottom: 4em;
 }
 
+@include grid-media-query("bp2"){
+	.articles,
+	.slide-wrapper{
+		margin-left: 250px;
+	}
 
-.slide .side-headlines{
-	position: absolute;
-	left: 0;
+	.side-headlines{
+		@include fontSize(12px);
+		height: 0;
+		margin-bottom: .4em;
+		max-width: 230px;
+	}
+
+	.slide .side-headlines{
+		position: absolute;
+		left: 0;
+	}
 }

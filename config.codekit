@@ -174,6 +174,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/libs\/smartresize.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/libs\/smartresize.js",
+		"outputAbbreviatedPath": "\/js\/libs\/min\/smartresize-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/libs\/two.min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -1968,38 +1979,44 @@
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/modernizr.js",
+			"linkedFileAbbreviatedPath": "\/js\/libs\/smartresize.js",
 			"position": 1,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/hogan.min.js",
+			"linkedFileAbbreviatedPath": "\/js\/modernizr.js",
 			"position": 2,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.min.js",
+			"linkedFileAbbreviatedPath": "\/js\/libs\/hogan.min.js",
 			"position": 3,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.ui.min.js",
+			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.min.js",
 			"position": 4,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/templates.js",
+			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.ui.min.js",
 			"position": 5,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/partials.js",
+			"linkedFileAbbreviatedPath": "\/js\/templates.js",
 			"position": 6,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 0,
+			"linkedFileAbbreviatedPath": "\/js\/partials.js",
+			"position": 7,
 			"type": 0
 			}
 		]

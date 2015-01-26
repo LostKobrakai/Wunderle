@@ -6,10 +6,12 @@ var theme = {
 	contentContainer: null,
 	ajax: false,
 	win: null,
+	mainnav: null,
 
 	init: function(){
 		this.breadcrumb.container = $(".breadcrumb").first();
 		this.win = $(window);
+		this.mainnav = $(".mainnav").first();
 		this.contentContainer = $("#content");
 		this.navigation.navigations = $(".mainnav").first();
 		this.navigation.navigations.add($(".footernav").first());
@@ -32,6 +34,32 @@ var theme = {
 		init: function(){
 			theme.win.on("click", "a[href]:not([href^='http://']):not([href^='https://'])", this.internalPageLink);
 			theme.win.on("popstate", this.statePoped);
+			$(".js-toggleMobileNav").on("click", this.mobileMenuToggle);
+		},
+
+		mobileMenuToggle: function(e){
+			e.preventDefault();
+
+			if(theme.mainnav.hasClass("mainnav--open")){
+				theme.mainnav.velocity({height: "3em"},{
+					duration: 100,
+					complete: function(){
+						theme.mainnav.removeClass("mainnav--open");
+						theme.mainnav.removeAttr("style");
+					}
+				});
+			}else{
+				var firstLevel = theme.mainnav.find(".mainnav__firstlevel"),
+						animateTo = theme.mainnav.height() + firstLevel.height();
+
+				theme.mainnav.velocity({height: animateTo},{
+					duration: 200,
+					complete: function(){
+						theme.mainnav.addClass("mainnav--open");
+						theme.mainnav.removeAttr("style");
+					}
+				});
+			}
 		},
 
 		statePoped: function(e){
@@ -41,6 +69,7 @@ var theme = {
 		},
 
 		internalPageLink: function(e){
+			theme.mainnav.removeClass("mainnav--open");
 			if(theme.ajax){
 				var ele = $(this),
 						href = ele.attr("href");
@@ -236,14 +265,14 @@ var theme = {
 					theme.history.addState(page, page.title, page.url);
 				},
 				error: function(){
-				  if(typeof tree[url] !== 'undefined'){
-  					var page = tree[url];
-  					page.cache = Math.floor(Date.now() / 1000);
+					if(typeof tree[url] !== 'undefined'){
+						var page = tree[url];
+						page.cache = Math.floor(Date.now() / 1000);
 						theme.rendering.renderMustache(page);
 						theme.history.addState(page, page.title, page.url);
-				  }else{
-				  	alert("Fehler beim Laden der Seite");
-				  }
+					}else{
+						alert("Fehler beim Laden der Seite");
+					}
 				}
 			});
 		}
@@ -317,6 +346,7 @@ var theme = {
 		},
 
 		initHome: function(){
+			var i;
 
 			theme.breadcrumb.hideBreadcrumb();
 
@@ -377,11 +407,30 @@ var theme = {
 				console.log(window.canvas);
 			}
 
-			var articles = $(".news").addClass("js-open").on("click", toggle);
+			var articles = $(".news");
+			articles.addClass("js-open").on("click", toggle);
 
-			for (var i = articles.length - 1; i >= 0; i--) {
+			for (i = articles.length - 1; i >= 0; i--) {
 				toggle.apply(articles.eq(i), []);
 			}
+
+			function applyHiding(){
+				if(!articles.first().hasClass("js-open")){
+					var ele = articles.first(),
+							content = ele.find(".content").first(),
+							children = content.children(),
+							height = 0;
+
+					children.not(children.first()).not(children.eq(1)).hide();
+					height = content.removeAttr("style").height();
+					children.show();
+
+					content.css("height", height);
+				}
+			}
+
+			theme.win.smartresize(applyHiding, 50);
+			applyHiding();
 
 			// Slideshow
 
@@ -445,8 +494,8 @@ var theme = {
 
 				// add a marker in the given location, attach some popup content to it and open the popup
 				L.marker([48.37628, 10.82801]).addTo(map)
-				    .bindPopup('<b>WUNDERLE + PARTNER</b> Architekten <br> Am Dreieck 6<br>86356 Neusäß/Steppach')
-				    .openPopup();
+						.bindPopup('<b>WUNDERLE + PARTNER</b> Architekten <br> Am Dreieck 6<br>86356 Neusäß/Steppach')
+						.openPopup();
 			}
 
 			if(window.L !== undefined){

@@ -5,8 +5,29 @@
 //------------------------------------------------------------------------------
 
 .mainnav{
+	position: relative;
+	border-top: 1px solid lighten($borderColor, 90);
+	border-bottom: 1px solid lighten($borderColor, 90);
+	margin-top: 3em;
 	margin-bottom: 1em;
-	margin-top: 7em;
+	height: 3em;
+	overflow: hidden;
+
+	&--open{
+		height: auto;
+	}
+
+	.mobileToggle{
+		@extend %uppercase;
+		line-height: 3em;
+		background-color: $bgColor;
+
+		&::after{
+			content: "v";
+			float: right;
+			color: $fontLightGray;
+		}
+	}
 
 	a{
 		text-decoration: none;
@@ -20,6 +41,47 @@
 	ul{
 		@extend %resetList;
 		position: relative;
+	}
+
+	li{
+		border-top: 1px solid lighten($borderColor, 90);
+		line-height: 1em;
+		padding: 1em 0;
+		vertical-align: middle;
+	}
+
+	&__secondlevel{
+		position: relative;
+		top: 1em;
+	}
+
+	&__secondlevel > li{
+		padding-left: 2em;
+	}
+}
+
+@include grid-media-query("bp2"){
+
+.mainnav{
+	margin-top: 7em;
+	height: auto;
+	border: 0;
+	overflow: visible;
+
+	li{
+		margin: 0;
+		padding: 0;
+		border: 0;
+		line-height: 1.4;
+	}
+
+	.mobileToggle{
+		display: none;
+	}
+
+	&__secondlevel{
+		position: static;
+		top: auto;
 	}
 
 	&__firstlevel > li{
@@ -67,4 +129,6 @@
 a[data-template="project-archive"]{
 	display: inline-block;
 	margin-top: .5em;
+}
+
 }
