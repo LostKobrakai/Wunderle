@@ -28,6 +28,7 @@
 		<title><?php echo $page->title; ?></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1">
 		<link rel="stylesheet" type="text/css" href="<?php echo $config->urls->templates?>style.css" />
+		<script src="<?php echo $config->urls->templates?>js/libs/picturefill.min.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<header class="siteHeader">

@@ -10,7 +10,7 @@
 		<div class="slide">
 			<h3 class="side-headlines"><a href='{{ url }}'>{{ title }}</a></h3>
 			<div class="slide-imagewrapper">
-				<img src="{{ image.url }}" alt="{{ image.desc }}" />
+				<img src="{{ image.url }}" sizes="{{ image.sizes }}" srcset="{{ image.srcset }}" alt="{{ image.desc }}" />
 			</div>
 		</div>
 	{{/ slides }}	
@@ -20,8 +20,8 @@
 <section class="news-wrapper">
 	<h2 class="side-headlines">Aktuelles</h2>
 	<div class="articles">
-	{{#news}}
-		{{> news}}
-	{{/news}}
+	{{# news }}
+		{{> news }}
+	{{/ news }}
 	</div>
 </section>

@@ -221,6 +221,10 @@ var theme = {
 			theme.breadcrumb.renderBreadcrumb(page);
 			document.title = page.title;
 			theme.template.initPerTemplate(page.template);
+
+			if(theme.contentContainer.offset().top < theme.win.scrollTop()){
+				theme.contentContainer.velocity("scroll", {duration: 150, easing: "ease-in", offset: -70});
+			}
 		}
 	},
 
