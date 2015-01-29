@@ -1,5 +1,6 @@
 var Mustache = Mustache || null,
 		Modernizr = Modernizr || null,
+		Fuse = Fuse || null,
 		tree = [];
 
 var theme = {
@@ -31,10 +32,15 @@ var theme = {
 	},
 
 	listeners: {
+		cache: {
+			searchfield: null
+		},
+
 		init: function(){
 			theme.win.on("click", "a[href]:not([href^='http://']):not([href^='https://'])", this.internalPageLink);
 			theme.win.on("popstate", this.statePoped);
 			$(".js-toggleMobileNav").on("click", this.mobileMenuToggle);
+			$(".filter-form input[type='text']").on("change input propertychange paste", this.searchProject);
 		},
 
 		mobileMenuToggle: function(e){
@@ -85,6 +91,61 @@ var theme = {
 					theme.rendering.preRendering(href, ele.attr("data-template"), ele.text());
 				}
 			}
+		},
+
+		searchProject: function(){
+			var ele = $(this),
+					search = ele.val().toLowerCase();
+			if(theme.listeners.cache.searchfield !== search){
+				theme.listeners.cache.searchfield = search;
+
+				var page = history.state || theme.initData,
+						projects = page.data.projects,
+						i,
+						foundSomething = false;
+
+				for (i = projects.length - 1; i >= 0; i--) {
+					var searchIn = [
+						projects[i].meta_type.title.toLowerCase(),
+						projects[i].title.toLowerCase()
+					], j = 0, foundInProject = false;
+
+					while(j < searchIn.length){
+						if(searchIn[j].indexOf(search) !== -1){
+							foundInProject = true;
+							break;
+						}
+						j++;
+					}
+
+					if(foundInProject){
+						projects[i].inactive = false;
+						foundSomething = true;
+					}else{
+						projects[i].inactive = true;
+					}
+				}
+
+				if(!foundSomething){
+					var f = new Fuse(projects, {
+						keys: ['title', 'meta_type.title'],
+						id: 'id'
+					});
+
+					var result = f.search(search);
+					console.log(result);
+
+					for (i = projects.length - 1; i >= 0; i--) {
+						if($.inArray(projects[i].id, result)){
+							projects[i].inactive = false;
+						}else{
+							projects[i].inactive = true;
+						}
+					}
+				}
+
+				theme.rendering.renderProjectStatusChange(projects);
+			}
 		}
 	},
 
@@ -114,10 +175,8 @@ var theme = {
 		renderProjectCategorySwitch: function(template, url, title){
 			var page = history.state || theme.initData,
 					projects = page.data.projects,
-					//currentUrl = window.location.pathname,
-					current, offset, oldPos = [], newPos = [],
-					container = $(".gridlist"),
 					i;
+					//currentUrl = window.location.pathname,
 
 			if(template === "projects"){
 				page.parents.length = 1;
@@ -143,6 +202,24 @@ var theme = {
 				}
 			}
 			page.parents = page.parents.filter(function(){return true;});
+
+			this.renderProjectStatusChange(projects);
+
+			$("h1").text(title);
+
+
+			page.url = url;
+			page.template = template;
+			page.title = title;
+			page.projects = projects;
+			this.afterRendering(page);
+			theme.history.addState(page, page.title, page.url);
+		},
+
+		renderProjectStatusChange: function(projects){
+			var current, offset, oldPos = [], newPos = [],
+					container = $(".gridlist"),
+					i;
 
 			projects.sort(function(a, b){
 				if(a.inactive && !b.inactive){
@@ -202,16 +279,6 @@ var theme = {
 					}
 				});
 			}
-
-			$("h1").text(title);
-
-
-			page.url = url;
-			page.template = template;
-			page.title = title;
-			page.projects = projects;
-			this.afterRendering(page);
-			theme.history.addState(page, page.title, page.url);
 		},
 
 		afterRendering: function(page){
