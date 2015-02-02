@@ -550,6 +550,9 @@ var theme = {
 
 			function initMap(){
 				var L = window.L || null;
+				if(L === null){
+					return false;
+				}
 				// create a map in the "map" div, set the view to a given place and zoom
 				var map = L.map('map', {scrollWheelZoom: false}).setView([48.37628, 10.8350], 15);
 
@@ -568,12 +571,13 @@ var theme = {
 						.openPopup();
 			}
 
-			if(window.L !== undefined){
+			if(window.L === undefined){
+				var $script = $("<script/>").attr("src", "//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js");
+				$script.on("load", initMap);
+				$("body").append($script);
 				initMap();
 			}else{
-				$(window).ready(function(){
-					initMap();
-				});
+				initMap();
 			}
 		}
 	}
