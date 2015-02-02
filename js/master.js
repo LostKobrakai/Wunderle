@@ -330,7 +330,6 @@ var theme = {
 				dataType: 'json',
 				timeout: typeof tree[url] !== 'undefined' ? 2000 : 0,
 				success: function(page){
-					console.log(page);
 					tree[page.url] = page;
 					theme.rendering.renderMustache(page);
 					theme.history.addState(page, page.title, page.url);
@@ -424,7 +423,11 @@ var theme = {
 
 			// News
 			function toggle(e){
-				var ele = $(this),
+				if(e && e.preventDefault){
+					e.preventDefault();
+					e.stopPropagation();
+				}
+				var ele = $(this).closest(".news"),
 						content = ele.find(".content").first(),
 						height,
 						duration = 200;
@@ -473,13 +476,9 @@ var theme = {
 				}
 			}
 
-			if(window.canvas !== undefined){
-				window.canvas.init();
-				console.log(window.canvas);
-			}
-
 			var articles = $(".news");
-			articles.addClass("js-open").on("click", toggle);
+			articles.addClass("js-open");
+			articles.find(".js-togglenews").on("click", toggle);
 
 			for (i = articles.length - 1; i >= 0; i--) {
 				toggle.apply(articles.eq(i), []);

@@ -8,6 +8,9 @@
 			{{{ content }}}
 		</div>
 		<footer>
-			<span class="date">{{ date }}</span> <a class="js-togglenews button align-right">Schließen</a>
+			<span class="date">{{ date }}</span>
+			{{^ notoggle }}
+			<a class="js-togglenews button align-right" href="{{ url }}">Schließen</a>
+			{{/ notoggle }}
 		</footer>
 	</article>

@@ -1,1 +1,11 @@
-<h1 class="is-vishidden">{{ title }}</h1>
+<h1>{{ title }}</h1>
+{{# fullwidth }}
+	<div class="fullWidth">
+		{{{ text }}}
+	</div>
+{{/ fullwidth }}
+{{^ fullwidth }}
+	<div class="maxWidth">
+		{{{ text }}}
+	</div>
+{{/ fullwidth }}

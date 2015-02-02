@@ -1,7 +1,21 @@
 .news{
 	padding-top: 4em;
 	padding-bottom: 1em;
-	border-bottom: 1px solid $fontLightGray;
+
+	.js-togglenews{
+		text-decoration: none;
+		&:hover,
+		&:focus{
+			text-decoration: underline;
+		}
+		&:active{
+			text-decoration: none;
+		}
+	}
+
+	.articles &{
+		border-bottom: 1px solid $fontLightGray;
+	}
 
 	.content{
 		overflow: hidden;
@@ -21,7 +35,7 @@
 		@extend %uppercase;
 	}
 
-	&:first-child{
+	.articles &:first-child{
 		border-top: 1px solid black;
 	}
 }

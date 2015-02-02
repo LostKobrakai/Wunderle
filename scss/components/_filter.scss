@@ -5,6 +5,8 @@
 
 	.totheright{
 		@extend %grid__item;
+		@extend %bp2--one-half;
+		@extend %push--bp2--one-half;
 		@extend %bp3--one-third;
 		@extend %push--bp3--two-thirds;
 	}
