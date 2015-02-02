@@ -39,3 +39,16 @@
 		border-top: 1px solid black;
 	}
 }
+
+.load-news{
+	display: inline-block;
+	width: 100%;
+	background-color: white;
+	text-decoration: none;
+
+	padding: 1em 0;
+	text-align: center;
+	margin-top: 3em;
+
+	@extend %uppercase;
+}

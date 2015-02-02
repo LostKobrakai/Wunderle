@@ -146,6 +146,48 @@ var theme = {
 
 				theme.rendering.renderProjectStatusChange(projects);
 			}
+		},
+
+		loadNewsEntries: function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			var nextPage,
+					lastpage = history.state.data.lastPage || $(this).attr("data-lastpage");
+
+			if(history.state === null){
+				nextPage = parseInt($(this).attr("data-page")) + 1;
+			}else{
+				nextPage = parseInt(history.state.data.pageNum || "0") + 1;
+			}
+
+			if(nextPage > lastpage){
+				return false;
+			}
+
+			$.ajax({
+				type: 'GET',
+				url: window.location.href+"/page"+nextPage,
+				dataType: 'json',
+				timeout: 2000,
+				success: function(page){
+					console.log(page);
+					theme.rendering.renderNewNewsItems(page);
+
+					if(history.state === null){
+						$(this).attr("data-page", nextPage);
+					}else{
+						history.state.data.pageNum = nextPage;
+						Array.prototype.push.apply(history.state.data.news, page.data.news);
+					}
+
+					if(nextPage == lastpage){
+						$(".js-load-news").remove();
+					}
+				},
+				error: function(){
+					alert("Fehler beim Laden neuer Einträge");
+				}
+			});
 		}
 	},
 
@@ -281,6 +323,21 @@ var theme = {
 			}
 		},
 
+		renderNewNewsItems: function(page){
+			var html = "", news = page.data.news;
+			for (var i = 0; i < news.length; i++) {
+				html += templates.news.render(news[i], templates);
+			}
+			$(".js-load-news").before(html);
+
+			var articles = $(".news");
+			articles.addClass("js-open");
+			articles.on("click", ".js-togglenews", theme.news.toggle);
+			for (i = articles.length - 1; i >= 0; i--) {
+				theme.news.toggle.apply(articles.eq(i), []);
+			}
+		},
+
 		afterRendering: function(page){
 			theme.contentContainer.css("opacity", "1");
 			this.currentTemplate = page.template;
@@ -401,28 +458,46 @@ var theme = {
 		}
 	},
 
-	template: {
-
-		initStartTemplate: function(){
-			this.initPerTemplate(theme.initTemplate);
-		},
-
-		initPerTemplate: function(template){
-			if(template == "home"){
-				this.initHome();
-			}else if(template === "contact"){
-				this.initContact();
-			}
-		},
-
-		initHome: function(){
+	news: {
+		initNews: function(){
 			var i;
-
-			theme.breadcrumb.hideBreadcrumb();
-
-
 			// News
-			function toggle(e){
+
+
+			var articles = $(".news");
+			articles.addClass("js-open");
+			articles.on("click", ".js-togglenews", this.toggle);
+
+			for (i = articles.length - 1; i >= 0; i--) {
+				this.toggle.apply(articles.eq(i), []);
+			}
+
+			function applyHiding(){
+				if(!articles.first().hasClass("js-open")){
+					var ele = articles.first(),
+							content = ele.find(".content").first(),
+							children = content.children(),
+							height = 0;
+
+					children.not(children.first()).not(children.eq(1)).hide();
+					height = content.removeAttr("style").height();
+					children.show();
+
+					content.css("height", height);
+				}
+			}
+
+			theme.win.smartresize(applyHiding, 50);
+			applyHiding();
+
+			// News AJAX loader
+
+			var button = $(".js-load-news").on("click", theme.listeners.loadNewsEntries);
+
+			button.text("Weitere Einträge laden");
+		},
+
+		toggle: function(e){
 				if(e && e.preventDefault){
 					e.preventDefault();
 					e.stopPropagation();
@@ -475,32 +550,34 @@ var theme = {
 					});
 				}
 			}
+	},
 
-			var articles = $(".news");
-			articles.addClass("js-open");
-			articles.find(".js-togglenews").on("click", toggle);
+	template: {
 
-			for (i = articles.length - 1; i >= 0; i--) {
-				toggle.apply(articles.eq(i), []);
+		initStartTemplate: function(){
+			this.initPerTemplate(theme.initTemplate);
+		},
+
+		initPerTemplate: function(template){
+			if(template == "home"){
+				this.initHome();
+			}else if(template === "contact"){
+				this.initContact();
+			}else if(template === "news-folder"){
+				this.initNewsFolder();
 			}
+		},
 
-			function applyHiding(){
-				if(!articles.first().hasClass("js-open")){
-					var ele = articles.first(),
-							content = ele.find(".content").first(),
-							children = content.children(),
-							height = 0;
+		initNewsFolder: function(){
+			theme.news.initNews();
+		},
 
-					children.not(children.first()).not(children.eq(1)).hide();
-					height = content.removeAttr("style").height();
-					children.show();
+		initHome: function(){
+			var i;
 
-					content.css("height", height);
-				}
-			}
+			theme.breadcrumb.hideBreadcrumb();
 
-			theme.win.smartresize(applyHiding, 50);
-			applyHiding();
+			theme.news.initNews();
 
 			// Slideshow
 

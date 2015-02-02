@@ -1,4 +1,6 @@
 <?php
+$times = [];
+$templateTimings = Debug::timer();
 require 'vendor/autoload.php';
 require '_classes.php';
 
@@ -28,3 +30,11 @@ if($config->ajax && $input->get->breadcrumbOnly == 1){
 	echo json_encode($data);
 	die();
 }
+
+if(!$config->ajax){
+	// Flush the head to the browser to enable faster loadtimes
+	require '_head.php';
+	flush();
+	ob_flush();
+}
+$times["init()"] = Debug::timer($templateTimings);
