@@ -37,7 +37,7 @@ var theme = {
 		},
 
 		init: function(){
-			theme.win.on("click", "a[href]:not([href^='http://']):not([href^='https://'])", this.internalPageLink);
+			theme.win.on("click", "a[href]:not([href^='http://']):not([href^='https://']):not([target])", this.internalPageLink);
 			theme.win.on("popstate", this.statePoped);
 			$(".js-toggleMobileNav").on("click", this.mobileMenuToggle);
 			$(".filter-form input[type='text']").on("change input propertychange paste", this.searchProject);
@@ -106,7 +106,7 @@ var theme = {
 
 				for (i = projects.length - 1; i >= 0; i--) {
 					var searchIn = [
-						projects[i].meta_type.title.toLowerCase(),
+						//projects[i].meta_type.title.toLowerCase(),
 						projects[i].title.toLowerCase()
 					], j = 0, foundInProject = false;
 
@@ -152,7 +152,9 @@ var theme = {
 			e.preventDefault();
 			e.stopPropagation();
 			var nextPage,
-					lastpage = history.state.data.lastPage || $(this).attr("data-lastpage");
+					lastpage = history.state === null ? $(this).attr("data-lastpage") : history.state.data.lastPage;
+
+
 
 			if(history.state === null){
 				nextPage = parseInt($(this).attr("data-page")) + 1;
@@ -516,8 +518,13 @@ var theme = {
 
 					if(ele.is(":first-child")){
 						var children = content.children();
+						if(children.length <= 2){
+							ele.find(".js-togglenews").remove();
+							return false;
+						}
 						children.not(children.first()).not(children.eq(1)).hide();
 						height = content.height();
+						//children.find("img").
 						children.show();
 					}
 
@@ -528,7 +535,11 @@ var theme = {
 							duration: duration,
 							easing: "ease-in-out",
 							complete: function(){
-								ele.find(".js-togglenews").text("Artikel lesen");
+								if(ele.is(":first-child")){
+									ele.find(".js-togglenews").text("Weiterlesen");
+								}else{
+									ele.find(".js-togglenews").text("Artikel lesen");
+								}
 								ele.removeClass("js-open");
 							}
 					});
@@ -565,10 +576,16 @@ var theme = {
 				this.initContact();
 			}else if(template === "news-folder"){
 				this.initNewsFolder();
+			}else if(template === "press"){
+				this.initPress();
 			}
 		},
 
 		initNewsFolder: function(){
+			theme.news.initNews();
+		},
+
+		initPress: function(){
 			theme.news.initNews();
 		},
 

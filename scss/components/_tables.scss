@@ -11,6 +11,11 @@
 		color: $fontLightGray;
 	}
 
+	.archive__item th,
+	.archive__item td{
+		vertical-align: baseline;
+	}
+
 	th[scope="col"]{
 		font-weight: normal;
 		@extend %uppercase;

@@ -15,6 +15,9 @@ foreach($pages->find("template=news, sort=-date") as $n){
 
 $templateData = array(
 	'title' => $page->title,
+	'newslist' => array(
+		'title' => "Aktuelles"
+	),
 	'news' => $news,
 	'noAjax' => true
 );

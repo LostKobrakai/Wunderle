@@ -39,5 +39,5 @@ $breakpoints: append($breakpoints, $first, "comma");
 	}
 }
 
-$breakpoint-has-push:	("bp2", "bp3");
+$breakpoint-has-push:	("bp1", "bp2", "bp3");
 $breakpoint-has-pull:	();

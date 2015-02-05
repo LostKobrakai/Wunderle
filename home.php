@@ -56,6 +56,9 @@ if($input->pageNum <= 1){
 
 	$templateData = array(
 		'title' => $page->title,
+		'newslist' => array(
+			'title' => "Aktuelles"
+		),
 		'news' => $news,
 		'newsCount' => $newsCount,
 		'slides' => $slides,
