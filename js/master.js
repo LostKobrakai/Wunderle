@@ -345,7 +345,7 @@ var theme = {
 			this.currentTemplate = page.template;
 			theme.navigation.updateNavigation(page);
 			theme.breadcrumb.renderBreadcrumb(page);
-			document.title = page.title;
+			document.title = page.title+" – WUNDERLE + PARTNER Architekten";
 			theme.template.initPerTemplate(page.template);
 
 			if(theme.contentContainer.offset().top < theme.win.scrollTop()){
@@ -578,6 +578,11 @@ var theme = {
 				this.initNewsFolder();
 			}else if(template === "press"){
 				this.initPress();
+			}else if(template === "team"){
+				$(".teamslist").find("td").each(function(){
+					var ele = $(this);
+					ele.html(ele.html().replace("[at]", "@"));
+				});
 			}
 		},
 

@@ -8,7 +8,7 @@
 		<div class="project__image">
 		{{# images }}
 			{{# first }}
-			<img class="project__highlight" src="{{ url }}">
+			<img class="project__highlight" src="{{ url }}" sizes="{{ sizes }}" srcset="{{ srcset }}" alt="{{ desc }}">
 			{{/ first }}
 		{{/ images }}
 		</div><!--
@@ -23,7 +23,7 @@
 	<div class="project__gallery">
 	{{# images }}
 		{{^ first }}
-		<img src="{{ url }}">
+		<img src="{{ url }}" sizes="{{ sizes }}" srcset="{{ srcset }}" alt="{{ desc }}">
 		{{/ first }}
 	{{/ images }}
 	</div>

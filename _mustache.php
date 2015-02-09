@@ -55,6 +55,7 @@
 		</footer>
 		<script src="<?php echo $config->urls->templates?>js/master.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
+			var theme = window.theme || {};
 			<?php echo "theme.initTemplate = \"".$page->template->name."\";"; ?>
 			<?php if(in_array($template, array("projects", "project-category"))) echo "theme.initData = ".json_encode(new FrontendPage($page, $templateData, $template)).";"; ?>
 			<?php 

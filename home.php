@@ -24,7 +24,7 @@ if($input->pageNum <= 1){
 						'quality' => 70,
 						'upscaling' => false, 
 						'cropping' => 'center' 
-					))->url." 850w"
+					))->url." ".(850 * 2)."w"
 		);
 
 		$slides[] = array(

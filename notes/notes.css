@@ -1,0 +1,24 @@
+._TemplateNotes{
+	max-width: 50em;
+}
+
+._TemplateNotes hr{
+	height: 1px;
+	border: 0;
+	background-color: #333;
+}
+
+._TemplateNotes ul{
+	padding: 0 0 0 30px;
+	margin: 1em 0;
+}
+
+._TemplateNotes ul li{
+  display: list-item;
+	list-style: disc outside;
+	margin: 0;
+}
+
+._TemplateNotes strong{
+	font-weight: bold;
+}
