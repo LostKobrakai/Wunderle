@@ -128,27 +128,16 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/js\/canvas.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/canvas.js",
-		"outputAbbreviatedPath": "\/js\/canvas.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/canvas.min.js": {
+	"\/js\/app.js": {
 		"fileType": 64,
 		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/canvas.min.js",
-		"outputAbbreviatedPath": "\/js\/min\/canvas.min-min.js",
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/js\/app.js",
+		"outputAbbreviatedPath": "\/js\/min\/app-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/js\/libs\/fuse.min.js": {
 		"fileType": 64,
@@ -167,17 +156,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/libs\/hogan.min.js",
 		"outputAbbreviatedPath": "\/js\/libs\/min\/hogan.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/libs\/isotope.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/js\/libs\/isotope.min.js",
-		"outputAbbreviatedPath": "\/js\/libs\/min\/isotope.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -249,56 +227,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/libs\/pointerevents.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/libs\/pointerevents.min.js",
-		"outputAbbreviatedPath": "\/js\/libs\/min\/pointerevents.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/libs\/require.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/libs\/require.js",
-		"outputAbbreviatedPath": "\/js\/libs\/min\/require-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/js\/libs\/script.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/libs\/script.js",
 		"outputAbbreviatedPath": "\/js\/libs\/min\/script-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/libs\/smartresize.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/libs\/smartresize.js",
-		"outputAbbreviatedPath": "\/js\/libs\/min\/smartresize-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/libs\/two.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/libs\/two.min.js",
-		"outputAbbreviatedPath": "\/js\/libs\/min\/two.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -398,6 +332,83 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/modernizr.js",
 		"outputAbbreviatedPath": "\/js\/min\/modernizr-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/old\/canvas.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/old\/canvas.js",
+		"outputAbbreviatedPath": "\/js\/old\/min\/canvas-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/old\/canvas.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/old\/canvas.min.js",
+		"outputAbbreviatedPath": "\/js\/old\/min\/canvas.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/old\/isotope.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/js\/old\/isotope.min.js",
+		"outputAbbreviatedPath": "\/js\/old\/min\/isotope.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/old\/pointerevents.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/old\/pointerevents.min.js",
+		"outputAbbreviatedPath": "\/js\/old\/min\/pointerevents.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/old\/require.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/old\/require.js",
+		"outputAbbreviatedPath": "\/js\/old\/min\/require-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/old\/smartresize.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/old\/smartresize.js",
+		"outputAbbreviatedPath": "\/js\/old\/min\/smartresize-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/old\/two.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/old\/two.min.js",
+		"outputAbbreviatedPath": "\/js\/old\/min\/two.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -2122,67 +2133,47 @@
 	],
 "lastSavedByUser": "Benjamin Milde",
 "manualImportLinks": {
-	"\/js\/canvas.js": [
-		{
-			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/pointerevents.min.js",
-			"position": 0,
-			"type": 0
-			},
-		{
-			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/two.min.js",
-			"position": 1,
-			"type": 0
-			}
-		],
 	"\/js\/master.js": [
 		{
 			"followForSyntaxChecking": 0,
-			"linkedFileAbbreviatedPath": "\/js\/libs\/smartresize.js",
-			"position": 0,
-			"type": 0
-			},
-		{
-			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/modernizr.js",
-			"position": 1,
+			"position": 0,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/libs\/hogan.min.js",
-			"position": 2,
+			"position": 1,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.min.js",
-			"position": 3,
+			"position": 2,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/libs\/velocity.ui.min.js",
-			"position": 4,
+			"position": 3,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/templates.js",
-			"position": 5,
+			"position": 4,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/partials.js",
-			"position": 6,
+			"position": 5,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 0,
 			"linkedFileAbbreviatedPath": "\/js\/libs\/fuse.min.js",
-			"position": 7,
+			"position": 6,
 			"type": 0
 			}
 		]

@@ -3,61 +3,60 @@
 $script.path('/site/templates/js/');
 
 if(document.getElementsByTagName("html")[0].className.match(/ie/)){
-	$script('libs/jquery', 'jQuery');
+	$script('libs/jquery', 'jQueryZepto');
 }else{
-	$script('libs/zepto', 'Zepto');
+	$script('libs/zepto', 'jQueryZepto');
 }
 
-$script
-	.ready('jQuery', function(){
+$script.ready('jQueryZepto', function(){
 
-		if(Modernizr.history){
-			$script('libs/hogan.min', function(){
-				$script(['templates', 'partials'], 'templating');
-			});
-		}
-
-		$script('libs/velocity.min', function(){
-			$script('libs/velocity.ui.min', 'velocity');
+	if(Modernizr.history){
+		$script('libs/hogan.min', function(){
+			$script(['templates', 'partials'], 'templating');
 		});
+	}
 
-	}).ready('Zepto', function(){
-
-		if(Modernizr.history){
-			$script('libs/hogan.min', function(){
-				$script(['templates', 'partials'], 'templating');
-			});
-		}
-
-		$script('libs/velocity.min', function(){
-			$script('libs/velocity.ui.min', 'velocity');
-		});
-
+	$script('libs/velocity.min', function(){
+		$script('libs/velocity.ui.min', 'velocity');
 	});
+
+});
 
 // Load App
 
 $script.ready('templating', function(){
-	var win = $(window),
-			navigations = $(".mainnav").first().add($(".footernav").first();
+	$script('app', 'app');
+});
 
-	function internalPageLinkClicked(e){
+// Mobile navigation toggle
+$script.ready('velocity', function(){
+	var mainnav = $(".mainnav").first();
+	$(".js-toggleMobileNav").on("click", function(e){
 		e.preventDefault();
 
-		// Close mobile Nav
-		theme.mainnav.removeClass("mainnav--open");
+		if(mainnav.hasClass("mainnav--open")){
+			mainnav.velocity({height: "3em"},{
+				duration: 100,
+				complete: function(){
+					mainnav.removeClass("mainnav--open");
+					mainnav.removeAttr("style");
+				}
+			});
+		}else{
+			var firstLevel = mainnav.find(".mainnav__firstlevel"),
+					animateTo = mainnav.height() + firstLevel.height();
 
-		// AJAX
-		var ele = $(this), href = ele.attr("href");
-
-		if(ele.attr("data-href")){
-			href = ele.attr("data-href");
+			mainnav.velocity({height: animateTo},{
+				duration: 200,
+				complete: function(){
+					mainnav.addClass("mainnav--open");
+					mainnav.removeAttr("style");
+				}
+			});
 		}
-		if(navigations.find(ele).length){
-			initialNavChange(ele);
-		}
-		//theme.rendering.preRendering(href, ele.attr("data-template"), ele.text());
-	}
+	});
 
-	win.on("click", "a[href]:not([href^='http://']):not([href^='https://']):not([href^='#']):not([target])", internalPageLinkClicked);
+	mainnav.on("click", "a", function(){
+		mainnav.removeClass("mainnav--open")
+	});
 });
