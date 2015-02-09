@@ -53,17 +53,18 @@
 				<span class="copy">&copy; <?php echo date("Y"); ?> Wunderle + Partner Architekten</span>
 			</div>
 		</footer>
-		<script src="<?php echo $config->urls->templates?>js/master.min.js" type="text/javascript"></script>
+		<script src="<?php echo $config->urls->templates?>js/libs/script.js" type="text/javascript" async></script>
+		<script src="<?php echo $config->urls->templates?>js/main.js" type="text/javascript" async></script>
 		<script type="text/javascript">
-			var theme = window.theme || {};
-			<?php echo "theme.initTemplate = \"".$page->template->name."\";"; ?>
-			<?php if(in_array($template, array("projects", "project-category"))) echo "theme.initData = ".json_encode(new FrontendPage($page, $templateData, $template)).";"; ?>
+			//if (!!!theme) theme = {};
+			<?php //echo "theme.initTemplate = \"".$page->template->name."\";"; ?>
+			<?php if(in_array($template, array("projects", "project-category"))) //echo "theme.initData = ".json_encode(new FrontendPage($page, $templateData, $template)).";"; ?>
 			<?php 
-				echo "theme.projectimages=[";
+				//echo "theme.projectimages=[";
 				foreach($pages->find("template=project") as $project) {
-					echo "{'title': '".$project->title."', 'img': '".$project->project_images->first()->url."'}, ";
+					//echo "{'title': '".$project->title."', 'img': '".$project->project_images->first()->url."'}, ";
 				}
-				echo "];";
+				//echo "];";
 			?>
 		</script>
 		<!-- <script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script> -->
