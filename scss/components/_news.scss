@@ -38,6 +38,10 @@
 	.articles &:first-child{
 		border-top: 1px solid black;
 	}
+
+	&.closed > .content{
+		height: 0;
+	}
 }
 
 .load-news{

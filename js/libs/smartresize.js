@@ -22,6 +22,6 @@ var debounce = function (func, threshold, execAsap) {
 		};
 };
 // smartresize 
-Zepto.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+$.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
 
-})(Zepto,'smartresize');
+})($,'smartresize');
