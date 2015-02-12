@@ -31,7 +31,7 @@ if($config->ajax && $input->get->breadcrumbOnly == 1){
 	die();
 }
 
-if(!$config->ajax){
+if(!$config->ajax && $page->template != "agency"){
 	// Flush the head to the browser to enable faster loadtimes
 	require '_head.php';
 	flush();
