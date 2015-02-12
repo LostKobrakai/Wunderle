@@ -139,12 +139,16 @@ loader = {
 				projects[i].inactive = false;
 			}
 		}else{
-			if(this.currentTemplate === "projects"){
-				page.parents.length = 2;
+			if(currentSite.template === "projects"){
+				console.log(page.parents);
+				while(page.parents.length > 2){
+					page.parents.pop();
+				}
 				page.parents.push({
 					title: page.title,
 					url: page.url
 				});
+				console.log(page.parents);
 			}
 
 			for (i = projects.length - 1; i >= 0; i--) {
