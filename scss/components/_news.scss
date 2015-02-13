@@ -38,6 +38,26 @@
 	.articles &:first-child{
 		border-top: 1px solid black;
 	}
+
+	&.closed > .content{
+		height: 0;
+	}
+}
+
+@include grid-media-query("bp2"){
+	.article-aside{
+		margin-left: 250px;
+	}
+}
+
+.gray-text, .gray-text a{
+	color: $fontLightGray;
+}
+
+.article-aside .news,
+.article-aside p:first-child{
+	padding-top: 0;
+	margin-top: 0;
 }
 
 .load-news{

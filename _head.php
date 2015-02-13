@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6" lang="de"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="de"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="de"> <![endif]-->
+<!--[if IE]><html class="ie" lang="de"> <![endif]-->
 <html lang="de">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1">
 		<?php echo $page->seo->render; ?>
-		<link rel="stylesheet" type="text/css" href="<?php echo $config->urls->templates?>style.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $config->urls->templates?>style.css" /><script src="<?php echo $config->urls->templates?>js/modernizr.js" type="text/javascript"></script>
 		<script src="<?php echo $config->urls->templates?>js/libs/picturefill.min.js" type="text/javascript"></script>
 	</head>
 	<body>

@@ -1,0 +1,13 @@
+.ie8{
+	.gridlist > li{
+		width: 50%;
+	}
+
+	.siteHeader, #content, footer > .container{
+		margin: 0 auto;
+	}
+
+	.siteHeader{
+		margin-bottom: 1em;
+	}
+}
