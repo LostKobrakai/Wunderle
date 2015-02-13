@@ -1,3 +1,28 @@
+@import url("http://fast.fonts.net/lt/1.css?apiType=css&c=ba91440c-9979-41a2-9968-d62febc0c9f3&fontids=721226,721250");
+@font-face{
+font-family:"Avenir LT W01_45 Book";
+src:url("fonts/721226/4f32268f-fd86-4960-b72c-4bb1ba75ec6f.eot?#iefix");
+src:url("fonts/721226/4f32268f-fd86-4960-b72c-4bb1ba75ec6f.eot?#iefix") format("eot"),url("fonts/721226/939cba03-5b40-4d01-9bc5-7589eca863db.woff") format("woff"),url("fonts/721226/849bc5b9-a2ff-4343-977b-26ba8bd24a60.ttf") format("truetype"),url("fonts/721226/f67fa3b5-c1d1-488f-8e60-a828b9ad56a4.svg#f67fa3b5-c1d1-488f-8e60-a828b9ad56a4") format("svg");
+}
+@font-face{
+font-family:"Avenir LT W01_95 Black";
+src:url("fonts/721250/a24b3f55-c8c8-41a1-a77e-7cdf417d82f6.eot?#iefix");
+src:url("fonts/721250/a24b3f55-c8c8-41a1-a77e-7cdf417d82f6.eot?#iefix") format("eot"),url("fonts/721250/5a05cf7f-f332-456f-ae67-d8c26e0d35b3.woff") format("woff"),url("fonts/721250/c33278bc-988e-440b-b4be-6acc095e6044.ttf") format("truetype"),url("fonts/721250/7bdad4a5-289b-42f9-b6fa-c5883b9e9f23.svg#7bdad4a5-289b-42f9-b6fa-c5883b9e9f23") format("svg");
+}
+
+@font-face{
+font-family:"Avenir LT W01";
+src:url("fonts/721226/4f32268f-fd86-4960-b72c-4bb1ba75ec6f.eot?#iefix");
+src:url("fonts/721226/4f32268f-fd86-4960-b72c-4bb1ba75ec6f.eot?#iefix") format("eot"),url("fonts/721226/939cba03-5b40-4d01-9bc5-7589eca863db.woff") format("woff"),url("fonts/721226/849bc5b9-a2ff-4343-977b-26ba8bd24a60.ttf") format("truetype"),url("fonts/721226/f67fa3b5-c1d1-488f-8e60-a828b9ad56a4.svg#f67fa3b5-c1d1-488f-8e60-a828b9ad56a4") format("svg");
+font-weight: normal;
+}
+@font-face{
+font-family:"Avenir LT W01";
+src:url("fonts/721250/a24b3f55-c8c8-41a1-a77e-7cdf417d82f6.eot?#iefix");
+src:url("fonts/721250/a24b3f55-c8c8-41a1-a77e-7cdf417d82f6.eot?#iefix") format("eot"),url("fonts/721250/5a05cf7f-f332-456f-ae67-d8c26e0d35b3.woff") format("woff"),url("fonts/721250/c33278bc-988e-440b-b4be-6acc095e6044.ttf") format("truetype"),url("fonts/721250/7bdad4a5-289b-42f9-b6fa-c5883b9e9f23.svg#7bdad4a5-289b-42f9-b6fa-c5883b9e9f23") format("svg");
+font-weight: bold;
+}
+
 html {
 	box-sizing: border-box;
 	font-size: 100%;

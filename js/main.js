@@ -63,7 +63,10 @@ $script.ready('velocity', function(){
 
 // News open / close
 $script.ready('velocity', function(){
-	initNews();
+	if(config.initTemplate == "home"){
+		initNews();
+		initSlider();
+	}
 	if(config.initTemplate == "contact") initMap();
 	$(".filter-form input[type='text']").on("change input propertychange paste", searchProject);
 	$(".ie8").find(".totheright").find("input").val("Suche…");
@@ -395,4 +398,47 @@ function initMap(){
 			.bindPopup('<b>WUNDERLE + PARTNER</b> Architekten <br> Am Dreieck 6<br>86356 Neusäß/Steppach')
 			.openPopup();
 
+}
+
+function initSlider(){
+	var slideshow = $(".slideshow").eq(0),
+			slides = slideshow.find(".slide");
+
+	slideshow.find(".slide-wrapper").addClass("slide-wrapper--overflow");
+
+	for (i = slides.length - 1; i >= 0; i--) {
+		if(i === 0){
+			slides.eq(i).addClass("slide--active");
+
+			var headline = slides.eq(i).find(".side-headlines").eq(0);
+
+			slideshow.find(".slide-wrapper").before($("<div />").addClass("headline-wrapper").addClass("headline-wrapper").html(headline.clone()));
+		}else{
+			slides.eq(i).addClass("slide--inactive");
+		}
+	}
+
+	var headwrapper = $(".headline-wrapper");
+
+	setTimeout(function(){
+		(function slideToNext(active){
+			var next = (active + 1 + slides.length) % slides.length,
+					headline = slides.eq(next).find(".side-headlines").eq(0);
+
+			slides.eq(next).addClass("slide--show");
+
+			slides.eq(active).velocity({
+				'right': 1000
+			},{
+				duration: 300,
+				complete: function(){
+					headwrapper.html(headline.clone());
+					slides.eq(next).removeClass("slide--inactive").addClass("slide--active");
+					slides.eq(active).addClass("slide--inactive").removeClass("slide--show").removeClass("slide--active").removeAttr("style");
+				}
+			});
+
+			if($(".slideshow").length) setTimeout(function(){ slideToNext(next); } , 5000);
+		})(0);
+	}, 5000);
 }

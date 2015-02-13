@@ -276,10 +276,15 @@ currentSite = {
 
 		if(["home", "news-folder", "press"].indexOf(this.template) !== -1){
 			initNews();
+			initSlider();
 		}
 
 		if(this.template === "contact"){
 			initMap();
+		}
+
+		if(this.template === "home"){
+			breadcrumb.hide();
 		}
 	}
 }
