@@ -243,7 +243,6 @@ loader = {
 	},
 
 	afterRendering: function(newState){
-		currentSite.endChange();
 		currentSite.page = this.newpage;
 		currentSite.template = this.newpage.template;
 		navigation.afterLoadUpdate(this.newpage);
@@ -255,6 +254,7 @@ loader = {
 			currentSite.contentContainer.velocity("scroll", {duration: 150, easing: "ease-in", offset: -70});
 		}
 		if(newState) this.addState();
+		currentSite.endChange();
 	},
 
 	addState: function(){
@@ -273,6 +273,14 @@ currentSite = {
 
 	endChange: function(){
 		this.contentContainer.css("opacity", "1");
+
+		if(["home", "news-folder", "press"].indexOf(this.template) !== -1){
+			initNews();
+		}
+
+		if(this.template === "contact"){
+			initMap();
+		}
 	}
 }
 

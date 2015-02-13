@@ -2,6 +2,9 @@
 
 $news = [];
 $slides = [];
+$limit = 5;
+
+$newsCount = $pages->count("template=news, sort=-date");
 
 if($input->pageNum <= 1){
 
@@ -48,11 +51,10 @@ if($input->pageNum <= 1){
 			'title' => $n->title,
 			'url' => $n->url,
 			'content' => $n->text,
-			'date' => $n->date
+			'date' => $n->date,
+			'inlist' => true
 		);
-	}
-
-	$newsCount = $pages->count("template=news, sort=-date");
+	}	
 
 	$templateData = array(
 		'title' => $page->title,
@@ -66,21 +68,23 @@ if($input->pageNum <= 1){
 			'url' => $pages->get("template=news-folder")->url
 		),
 		'pageNum' => $input->pageNum,
-		'lastPage' => ceil($newsCount / 5)
+		'noAjax' => ceil($newsCount / $limit) <= 1
 	);
 
 }else{
-	foreach($pages->find("template=news, sort=-date, limit=5") as $n){
+	foreach($pages->find("template=news, sort=-date, limit=$limit") as $n){
 		$news[] = array(
 			'title' => $n->title,
 			'url' => $n->url,
 			'content' => $n->text,
-			'date' => $n->date
+			'date' => $n->date,
+			'inlist' => true
 		);
 	}
 
 		$templateData = array(
 		'news' => $news,
-		'pageNum' => $input->pageNum
+		'pageNum' => $input->pageNum,
+		'limit' => ceil($newsCount / $limit)
 	);
 }

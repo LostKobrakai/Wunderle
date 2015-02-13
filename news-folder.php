@@ -9,7 +9,8 @@ foreach($pages->find("template=news, sort=-date") as $n){
 		'title' => $n->title,
 		'url' => $n->url,
 		'content' => $n->text,
-		'date' => $n->date
+		'date' => $n->date,
+		'inlist' => true
 	);
 }
 

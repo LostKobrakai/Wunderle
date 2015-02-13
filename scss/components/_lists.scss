@@ -110,6 +110,10 @@ $breadcrumb-spacer: ">";
 			display: inline-block;
 			margin-left: $breadcrumb-space;
 
+			.ie8 &{
+				margin-left: $breadcrumb-space * 2;
+			}
+
 			&::before,
 			&:before{
 				content: $breadcrumb-spacer;

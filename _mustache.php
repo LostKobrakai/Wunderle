@@ -60,11 +60,11 @@
 			<?php echo "config.initTemplate = \"".$page->template->name."\";"; ?>
 			<?php if(in_array($template, array("projects", "project-category"))) echo "config.initData = ".json_encode(new FrontendPage($page, $templateData, $template)).";"; ?>
 			<?php 
-				echo "config.projectimages=[";
+				//echo "config.projectimages=[";
 				foreach($pages->find("template=project") as $project) {
-					echo "{'title': '".$project->title."', 'img': '".$project->project_images->first()->url."'}, ";
+					//echo "{'title': '".$project->title."', 'img': '".$project->project_images->first()->url."'}, ";
 				}
-				echo "];";
+				//echo "];";
 			?>
 		</script>
 		<!-- <script src="<?php echo $config->urls->templates?>js/canvas.min.js" type="text/javascript"></script> -->

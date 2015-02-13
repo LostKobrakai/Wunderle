@@ -2,7 +2,7 @@
 	<h2 class="side-headlines">{{ newslist.title }}</h2>
 	<div class="articles">
 	{{# news }}
-		{{> news }}
+		{{> news-item }}
 	{{/ news }}
 	{{^ noAjax }}
 	<a href="{{ newsfolder.url }}" data-page="1" data-lastpage="{{ lastpage }}" class="js-load-news load-news">Zum Archiv</a>

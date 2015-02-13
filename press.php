@@ -8,6 +8,7 @@ foreach($page->children("template=press-article, sort=-date") as $article){
 		'url' => $article->url,
 		'content' => $article->text,
 		'date' => $article->date,
+		'inlist' => true,
 		'publisher' => $article->headline,
 		'original' => $article->file ? array(
 			'url' => $article->file->url

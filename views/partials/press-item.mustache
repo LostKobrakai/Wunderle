@@ -1,4 +1,4 @@
-	<article class="news">
+	<article class="news {{# inlist }}closed{{/ inlist }}">
 		<h3 class="h4">
 			<a href="{{ url }}" title="{{ title }}"></a>
 				{{ title }}
@@ -14,7 +14,7 @@
 				{{# original }}&middot; <a href="{{ original.url }}" target="_blank">Orginal downloaden</a>{{/ original }}
 			</span>
 			{{^ notoggle }}
-			<a class="js-togglenews button align-right" href="{{ url }}">Schließen</a>
+			<a class="js-togglenews button align-right" href="{{ url }}">Artikel lesen</a>
 			{{/ notoggle }}
 		</footer>
 	</article>

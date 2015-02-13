@@ -5,5 +5,9 @@ $templateData = array(
 		'url' => $page->url,
 		'content' => $page->text,
 		'date' => $page->date,
-		'notoggle' => true
+		'notoggle' => true,
+		'publisher' => $page->headline,
+		'original' => $page->file ? array(
+			'url' => $page->file->url
+		) : false
 	);

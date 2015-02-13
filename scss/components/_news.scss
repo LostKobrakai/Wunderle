@@ -44,6 +44,20 @@
 	}
 }
 
+@include grid-media-query("bp2"){
+	.article-aside{
+		margin-left: 250px;
+	}
+}
+
+.gray-text, .gray-text a{
+	color: $fontLightGray;
+}
+
+.article-aside .news{
+	padding-top: 0;
+}
+
 .load-news{
 	display: inline-block;
 	width: 100%;
